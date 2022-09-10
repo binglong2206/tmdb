@@ -21,28 +21,35 @@ class App extends React.Component {
   };
 
 
-  addToFav = (id) => {
-    this.props.addFavorite(id);
+  addToFav = (obj) => {
+    this.props.addFavorite(obj);
   }
 
 
   render() {
-    // console.log(this.state.data);
+    console.log(this.state.data);
     // console.log(this.props)
     const { data } = this.state
-    const { addFavorite } = this.props
+    const { favorites, addFavorite } = this.props
 
     return (
       <>
         <h1>Movies:</h1>
         <div>{data && data.results.map((el, key) => {
           return (
-            <div key={key} idd={el.id} onClick={()=>addFavorite(el.id)}>
+            <div key={key} idd={el.id} onClick={()=>addFavorite(el)}>
               {el.title ? el.title : el.name}
             </div>
           )
         })}</div>
-        {this.props.favorites}
+        <h1>Movies:</h1>
+        <div>{favorites.length > 0 && favorites.map((el, key) => {
+          return (
+            <div key={key} onClick={()=>addFavorite(el)}>
+              {el.title ? el.title : el.name}
+            </div>
+          )
+        })}</div>
       </>
     )
   }
@@ -56,7 +63,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    addFavorite: (id) => dispatch(addFavorite(id))
+    addFavorite: (obj) => dispatch(addFavorite(obj))
   }
 }
 

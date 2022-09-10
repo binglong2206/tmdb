@@ -7,9 +7,12 @@ export const favoritesSlice = createSlice({
   },
   reducers: {
     addFavorite: (state, action) => {
-      state.list = state.list.indexOf(action.payload) >= 0 ? 
-        state.list.filter(el => {return el !== action.payload}) :
-        [...state.list, action.payload]
+      const arr = [...state.list];
+      const media = action.payload; //  For readability
+
+      state.list = arr.map((el) => el.id).indexOf(media.id) > 0 ? 
+        arr.filter(el => el.id !== media.id) :
+        [...state.list, media]
     },
   },
 })
