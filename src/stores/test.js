@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const testSlice = createSlice({
   name: 'test',
   initialState: {
-    test: 0,
+    test: 987,
   },
   reducers: {
     testAction: (state, action) => {
