@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState: {
-    ids: {}, // Will refactor, abit confusing
+    ids: {}, // Mainly for adding/removing css classes via key indexing
     list: [],
   },
   reducers: {
