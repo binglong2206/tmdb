@@ -3,25 +3,32 @@ import { createSlice } from '@reduxjs/toolkit'
 export const favoritesSlice = createSlice({
   name: 'favorites',
   initialState: {
-    list: [],
+    list: {},
   },
   reducers: {
     initFavorite: (state) => {
       const localData = JSON.parse(localStorage.getItem('tmdb_favorites'))
-      state.list = localData ? localData : [];
+      state.list = localData ? localData : {};
     },
     addFavorite: (state, action) => {
-      const arr = [...state.list];
+      const list = {...state.list};
       const media = action.payload; //  For readability
 
       // Assign to new variables so localStorage can use it
-      const updatedList = arr.map((el) => el.id).indexOf(media.id) >= 0 ? 
-        arr.filter(el => el.id !== media.id) :
-        [...state.list, media]
+      // const updatedList = list[media.id] ? 
+      //   arr.filter(el => el.id !== media.id) :
+      //   [...state.list, media]
 
-        localStorage.setItem('tmdb_favorites', JSON.stringify(updatedList))
+      if (list[media.id]) {
+        delete list[media.id]
+      } else {
+        list[media.id] = media
+      }
 
-        state.list = updatedList;
+      localStorage.setItem('tmdb_favorites', JSON.stringify(list))
+
+      // Update State
+      state.list = list;
     },
   },
 })
