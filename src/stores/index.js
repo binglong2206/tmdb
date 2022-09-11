@@ -1,9 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit'
-import favoritesReducer from './favorites'
+import globalReducer from './global'
 
 const store = configureStore({
   reducer: {
-    favorites: favoritesReducer,
+    global: globalReducer,
   },
 })
 

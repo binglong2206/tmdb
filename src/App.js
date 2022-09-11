@@ -1,7 +1,7 @@
 import React from 'react'
 import "./styles/App.css"
 import { connect } from "react-redux"
-import { addFavorite, initFavorite } from './stores/favorites'
+import { addFavorite, initFavorite } from './stores/global'
 import Test from './Gallery'
 import SearchField from './SearchField'
 
@@ -48,27 +48,16 @@ class App extends React.Component {
 
   }
 
-  startSearch = async () => {
-    console.log('SEARCHING...')
-    await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=dog&page=1&include_adult=false`)
-      .then(r => r.json())
-      .then(data => {
-        if (data.success === false) throw new Error('custom error')
-        this.setState({results: data.results})
-      })
-      .catch(err => console.error(err))
-  }
-
 
 
   render() {
     const { results } = this.state
-    const { favorites, addFavorite, favoritesIds } = this.props
+    const { favoriteList, addFavorite, favoriteIds } = this.props
 
     return (
       <>
       <h1>Favorites:</h1>
-        <div>{favorites && favorites.map((el, key) => {
+        <div>{favoriteList && favoriteList.map((el, key) => {
           return (
             <span key={key} onClick={()=>addFavorite(el)}>
               {el.title ? el.title : el.name}
@@ -79,7 +68,7 @@ class App extends React.Component {
       <SearchField results={results} setResults={(obj)=>this.setState(obj)} />
 
         <h1>Movies:</h1>
-        <Test results={results} nextPage={this.nextPage} loading={this.state.loading} addFavorite={addFavorite} favoritesIds={favoritesIds} />
+        <Test results={results} nextPage={this.nextPage} loading={this.state.loading} addFavorite={addFavorite} favoritesIds={favoriteIds} />
 
         
         <button onClick={this.nextPage}>next page</button>
@@ -90,8 +79,8 @@ class App extends React.Component {
 
 const mapState = (state) => {
   return {
-    favorites: state.favorites.list,
-    favoritesIds: state.favorites.ids
+    favoriteList: state.global.favoriteList,
+    favoriteIds: state.global.favoriteIds
   }
 }
 
