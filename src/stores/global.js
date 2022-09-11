@@ -8,9 +8,10 @@ export const globalSlice = createSlice({
     favoriteList: [],
     results: [],
     page: 1,
-    keyword: ""
+    keyword: "",
+    tab: 0 // Allow search component to switch tab 
   },
-  // Redux Doc says can mutate directly via createSlice, sticking to immutability for now. To update.
+  // Redux Doc says can mutate directly via createSlice
   reducers: {
     // When new query OR search field empty
     reset: (state, action) => { 
@@ -26,6 +27,9 @@ export const globalSlice = createSlice({
       state.page++ // Testing mutable state
     },
 
+    switchTab: (state, action) => {
+      state.tab = action.payload
+    },
     initFavorite: (state) => {
       const localList = JSON.parse(localStorage.getItem('tmdb_favorites'))
       const localIds = JSON.parse(localStorage.getItem('tmdb_favoritesIds'))
@@ -56,6 +60,6 @@ export const globalSlice = createSlice({
   },
 })
 
-export const { setFavorite, initFavorite, reset, addResults } = globalSlice.actions
+export const { setFavorite, initFavorite, reset, addResults, switchTab } = globalSlice.actions
 
 export default globalSlice.reducer

@@ -17,7 +17,7 @@ class Gallery extends React.Component {
 
   render() {
     const {results, favoriteList, setFavorite, lastRef} = this.props; // Connected from redux
-    const { tab, show } = this.state
+    const { tab } = this.state
 
     return (
       <section className='posters'>
@@ -26,7 +26,6 @@ class Gallery extends React.Component {
           <div>yo</div>
           <div style={{position: 'absolute', bottom:'33px', width: '450px', backgroundColor:'red'}}>MODAL</div>
         </div>
-        <button onClick={()=>this.setState({show:626735})}>show more</button>
 
         <div className="posters-wrap">
           {tab === 0 && results && results.map((el, key) => 
@@ -37,7 +36,7 @@ class Gallery extends React.Component {
             <Poster el={el} key={key} lastRef={lastRef} setFavorite={setFavorite} length={results.length} />
           )}
         </div>
-        
+
       </section>
     )
   }
