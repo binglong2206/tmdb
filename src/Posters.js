@@ -1,10 +1,12 @@
 import React from "react";
+import { connect } from "react-redux"
+import { mapState, mapDispatch } from './stores/maps'
 import './styles/Posters.css'
 
 
-class Posters extends React.Component {
+class Gallery extends React.Component {
   render() {
-    const {results, lastRef} = this.props;
+    const {results, lastRef, tab} = this.props; // Connected from redux
 
     return (
       <section className='posters'>
@@ -44,4 +46,4 @@ class Posters extends React.Component {
 }
 
 
-export default Posters
+export default connect(mapState,mapDispatch)(Gallery)

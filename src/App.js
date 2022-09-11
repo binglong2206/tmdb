@@ -2,9 +2,10 @@ import React from 'react'
 import "./styles/App.css"
 import { connect } from "react-redux"
 import { mapState, mapDispatch } from './stores/maps'
-import Gallery from './Gallery'
+import Observer from './Observer'
 import SearchField from './SearchField'
 import Hero from './Hero'
+import Posters from './Posters'
 
 
 class App extends React.Component {
@@ -53,14 +54,14 @@ class App extends React.Component {
 
 
   render() {
-    const { favoriteList, setFavorite, favoriteIds, results } = this.props
+    // const { favoriteList, setFavorite, favoriteIds, results } = this.props
           
     return (
       <div className='app'> 
         <Hero />
-        <h1 style={{color:'white', fontSize: '30px'}}>Tabs</h1>
-        <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 
-          addFavorite={setFavorite} favoritesIds={favoriteIds} />
+        <Observer nextPage={this.nextPage}>
+          <Posters />
+        </Observer> 
       </div>
     )
   }

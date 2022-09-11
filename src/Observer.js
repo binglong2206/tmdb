@@ -1,7 +1,6 @@
 import React, { useRef, useCallback } from 'react'
-import Posters from './Posters'
 
-export default function Gallery({results, nextPage, loading, addFavorite, favoritesIds}) {
+export default function Observer({nextPage, loading, children}) {
 
   const observer = useRef()
 
@@ -20,8 +19,7 @@ export default function Gallery({results, nextPage, loading, addFavorite, favori
 
   return (
     <>
-      <Posters results={results} lastRef={lastRef} /> {/**DONT NAME IT REF*/}
-      {loading && <h1>LOADING</h1>}
+      {React.cloneElement(children, {lastRef: lastRef, test:123})} {/**DONT NAME PROP "ref" */}
     </>
   )
 }
