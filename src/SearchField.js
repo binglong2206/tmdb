@@ -1,6 +1,9 @@
 import React from "react";
+import { mapState, mapDispatch } from './stores/maps'
+import { connect } from 'react-redux'
 
-export default class SearchField extends React.Component {
+
+class SearchField extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -8,7 +11,7 @@ export default class SearchField extends React.Component {
         }
     }
 
-    startSearch = async(keyword) => {
+    newSearch = async(keyword) => {
         console.log('SEARCHING...')
         await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&include_adult=false`)
           .then(r => r.json())
@@ -31,7 +34,7 @@ export default class SearchField extends React.Component {
 
     // State here will be updated
     debouncedSearch = this.debounce(()=>{
-        this.startSearch(this.state.searchText); 
+        this.newSearch(this.state.searchText); 
         console.log(this.state.searchText)
      }
     )
@@ -51,3 +54,5 @@ export default class SearchField extends React.Component {
     }
 
 }
+
+  export default connect(mapState,mapDispatch)(SearchField)

@@ -1,8 +1,8 @@
 import React from 'react'
 import "./styles/App.css"
 import { connect } from "react-redux"
-import { addFavorite, initFavorite } from './stores/global'
-import Test from './Gallery'
+import { mapState, mapDispatch } from './stores/maps'
+import Gallery from './Gallery'
 import SearchField from './SearchField'
 
 
@@ -24,6 +24,7 @@ class App extends React.Component {
       .then(data => {
         if (data.success === false) throw new Error('custom error')
         this.setState({results: data.results})
+        this.props.newSearch(data.results)
       })
       .catch(err => console.error(err))
     
@@ -51,15 +52,15 @@ class App extends React.Component {
 
 
   render() {
-    const { results } = this.state
-    const { favoriteList, addFavorite, favoriteIds } = this.props
+    const { favoriteList, setFavorite, favoriteIds, results } = this.props
 
     return (
       <>
+      {/* <button onClick={()=>{console.log(this.props.page,this.props.results)}}>Show Redux</button> */}
       <h1>Favorites:</h1>
         <div>{favoriteList && favoriteList.map((el, key) => {
           return (
-            <span key={key} onClick={()=>addFavorite(el)}>
+            <span key={key} onClick={()=>setFavorite(el)}>
               {el.title ? el.title : el.name}
             </span>
           )
@@ -68,26 +69,9 @@ class App extends React.Component {
       <SearchField results={results} setResults={(obj)=>this.setState(obj)} />
 
         <h1>Movies:</h1>
-        <Test results={results} nextPage={this.nextPage} loading={this.state.loading} addFavorite={addFavorite} favoritesIds={favoriteIds} />
-
-        
-        <button onClick={this.nextPage}>next page</button>
+        <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} addFavorite={setFavorite} favoritesIds={favoriteIds} />
       </>
     )
-  }
-}
-
-const mapState = (state) => {
-  return {
-    favoriteList: state.global.favoriteList,
-    favoriteIds: state.global.favoriteIds
-  }
-}
-
-const mapDispatch = (dispatch) => {
-  return {
-    addFavorite: (obj) => dispatch(addFavorite(obj)),
-    initFavorite: () => dispatch(initFavorite())
   }
 }
 
