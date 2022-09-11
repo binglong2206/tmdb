@@ -10,7 +10,11 @@ export default function Observer({nextPage, children}) {
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(entries => {
       // Callback function when entry intersect
-      if (entries[0].isIntersecting) nextPage();
+      if (entries[0].isIntersecting) {
+        nextPage();
+        console.log('OBSERVER CALLLLL')
+
+      }
     })
 
     // Trigger callback when observed

@@ -29,12 +29,16 @@ class Gallery extends React.Component {
 
         <div className="posters-wrap">
           {tab === 0 && results && results.map((el, key) => 
-            <Poster el={el} key={key} lastRef={lastRef} setFavorite={setFavorite} length={results.length} />
+            <div key={key}>
+              <Poster el={el} mapKey={key} lastRef={lastRef} setFavorite={setFavorite} length={results.length} />
+            </div>
             )}
 
           {tab === 1 && favoriteList && favoriteList.map((el, key) => 
-            <Poster el={el} key={key} lastRef={lastRef} setFavorite={setFavorite} length={results.length} />
-          )}
+            <div key={key}>
+              <Poster el={el} mapKey={key} setFavorite={setFavorite} />
+            </div>          
+            )}
         </div>
 
       </section>

@@ -20,7 +20,7 @@ class App extends React.Component {
     this.props.initFavorite()
     
     console.log('MOUNT FETCH...')
-    await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
+    await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=9570742c201707db7194bcae2c955bac`)
       .then(r => r.json())
       .then(data => {
         if (data.success === false) throw new Error('custom error')
@@ -33,8 +33,8 @@ class App extends React.Component {
       const {page, keyword} = this.props;
       try {
         const res = (this.props.keyword === "") ?
-            await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page+1}`) :
-            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&page=${page+1}`)
+            await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=9570742c201707db7194bcae2c955bac&page=${page+1}`) :
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=9570742c201707db7194bcae2c955bac&query=${keyword}&page=${page+1}`)
         const data = await res.json()
 
         if (data.success === false) {

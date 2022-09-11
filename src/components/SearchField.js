@@ -16,10 +16,10 @@ class SearchField extends React.Component {
       const res =
         keyword === ""
           ? await fetch(
-              `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`
+              `https://api.themoviedb.org/3/trending/all/day?api_key=9570742c201707db7194bcae2c955bac`
             )
           : await fetch(
-              `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}`
+              `https://api.themoviedb.org/3/search/movie?api_key=9570742c201707db7194bcae2c955bac&query=${keyword}`
             );
       const data = await res.json();
 
