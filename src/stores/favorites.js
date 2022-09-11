@@ -10,7 +10,7 @@ export const favoritesSlice = createSlice({
     initFavorite: (state) => {
       const localList = JSON.parse(localStorage.getItem('tmdb_favorites'))
       const localIds = JSON.parse(localStorage.getItem('tmdb_favoritesIds'))
-      state.list = localList ? localList : [];
+      state.list = localList ? localList : []; // Incase user clear localstore
       state.ids = localIds ? localIds : {};
     },
     addFavorite: (state, action) => {
