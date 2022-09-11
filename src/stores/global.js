@@ -7,19 +7,22 @@ export const globalSlice = createSlice({
     favoriteIds: {}, // Mainly for adding/removing css classes via key indexing
     favoriteList: [],
     results: [],
-    page: 1
+    page: 1,
+    keyword: ""
   },
   // Redux Doc says can mutate directly via createSlice, sticking to immutability for now. To update.
   reducers: {
     // When new query OR search field empty
-    newSearch: (state, action) => { 
-      state.results = action.payload // obj[]
+    reset: (state, action) => { 
+      const { results, keyword } = action.payload
+      state.results = results // obj[]
       state.page = 1 
+      state.keyword = keyword
     },
 
     // Intersection Observer hits & fetch
     addResults: (state, action) => {
-      state.results = [...state.results, action.payload];
+      state.results = [...state.results, ...action.payload];
       state.page++ // Testing mutable state
     },
 
@@ -53,6 +56,6 @@ export const globalSlice = createSlice({
   },
 })
 
-export const { setFavorite, initFavorite, newSearch, addResults } = globalSlice.actions
+export const { setFavorite, initFavorite, reset, addResults } = globalSlice.actions
 
 export default globalSlice.reducer

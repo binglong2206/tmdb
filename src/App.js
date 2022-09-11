@@ -10,9 +10,6 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      page: 1,
-      visible: false,
-      results: null,
       loading: false
     }
   }
@@ -23,8 +20,7 @@ class App extends React.Component {
       .then(r => r.json())
       .then(data => {
         if (data.success === false) throw new Error('custom error')
-        this.setState({results: data.results})
-        this.props.newSearch(data.results)
+        this.props.reset({results: data.results, keyword: ""} )
       })
       .catch(err => console.error(err))
     
@@ -34,19 +30,23 @@ class App extends React.Component {
 
 
   nextPage = async () => {
-    console.log('FETCHING...')
-    this.setState({loading: true})
-    await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${this.state.page + 1}`)
-      .then(r => r.json())
-      .then(data => {
-        // console.log(data)
-        if (data.success === false) throw new Error('custom error')
-        setTimeout(()=>{
-          this.setState((state) => ({results: [...state.results, ...data.results], page: state.page + 1}))
-        }, 2000)
-      }).then(()=>this.setState({loading: false}))
-      .catch(err => console.error(err))
+      try {
+        this.setState({loading: true})
+        const res = (this.props.keyword === "") ?
+            await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${this.props.page+1}`) :
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${this.props.keyword}&page=${this.props.page + 1}`)
+        const data = await res.json()
 
+        if (data.success === false) {
+            throw new Error('custom error')
+        } else {
+          setTimeout(()=>{
+            this.props.addResults(data.results).then(()=>this.setState({loading: false}))
+          }, 2000)
+        }
+        } catch(e) {
+            console.error("CUSTOM ERROR")
+        }
   }
 
 
@@ -56,7 +56,7 @@ class App extends React.Component {
 
     return (
       <>
-      {/* <button onClick={()=>{console.log(this.props.page,this.props.results)}}>Show Redux</button> */}
+      <button onClick={()=>{console.log(this.props.keyword)}}>Show Redux</button>
       <h1>Favorites:</h1>
         <div>{favoriteList && favoriteList.map((el, key) => {
           return (
@@ -69,7 +69,10 @@ class App extends React.Component {
       <SearchField results={results} setResults={(obj)=>this.setState(obj)} />
 
         <h1>Movies:</h1>
-        <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} addFavorite={setFavorite} favoritesIds={favoriteIds} />
+
+
+        <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 
+          addFavorite={setFavorite} favoritesIds={favoriteIds} />
       </>
     )
   }

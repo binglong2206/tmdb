@@ -11,15 +11,22 @@ class SearchField extends React.Component {
         }
     }
 
-    newSearch = async(keyword) => {
-        console.log('SEARCHING...')
-        await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&include_adult=false`)
-          .then(r => r.json())
-          .then(data => {
-            if (data.success === false) throw new Error('custom error')
-            this.props.setResults({results: data.results})
-          })
-          .catch(err => console.error(err))
+    newSearch = async (keyword) => {
+        try {
+            console.log('SEARCHING...')
+            const res = (keyword === "") ?
+                await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`) :
+                await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}`)
+            const data = await res.json()
+
+            if (data.success === false) {
+                throw new Error('custom error')
+            } else {
+                this.props.reset({results: data.results, keyword: keyword})
+            }
+        } catch(e) {
+            console.error("CUSTOM ERROR")
+        }
       }
 
 
@@ -35,7 +42,6 @@ class SearchField extends React.Component {
     // State here will be updated
     debouncedSearch = this.debounce(()=>{
         this.newSearch(this.state.searchText); 
-        console.log(this.state.searchText)
      }
     )
 
