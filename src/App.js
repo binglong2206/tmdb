@@ -56,7 +56,7 @@ class App extends React.Component {
 
     return (
       <>
-      <button onClick={()=>{console.log(this.props.keyword)}}>Show Redux</button>
+      <button onClick={()=>{console.log(this.props.keyword)}}>{this.props.keyword}</button>
       <h1>Favorites:</h1>
         <div>{favoriteList && favoriteList.map((el, key) => {
           return (
