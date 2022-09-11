@@ -58,6 +58,7 @@ class App extends React.Component {
     return (
       <div className='app'> 
         <Hero />
+        <h1 style={{color:'white', fontSize: '30px'}}>Tabs</h1>
         <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 
           addFavorite={setFavorite} favoritesIds={favoriteIds} />
       </div>

@@ -8,7 +8,7 @@ class Posters extends React.Component {
 
     return (
       <section className='posters'>
-        <div style={{fontSize: '56px', fontWeight:'bold'}}>Trending:</div>
+        {/* <div style={{fontSize: '56px', fontWeight:'bold'}}>Trending:</div> */}
         <div className="posters-wrap">
           {results && results.map((el, key) => { 
             if (key + 1 === results.length) {
@@ -32,8 +32,8 @@ class Posters extends React.Component {
                       className='img_poster'
                       src={`https://image.tmdb.org/t/p/w300/${el.poster_path}`} 
                       alt='poster'/>
+                    <h1>Movie Title</h1>
                 </div>
-                <h1>Movie Title</h1>
               </div>
             )
           })}
