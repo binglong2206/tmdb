@@ -53,27 +53,27 @@ class App extends React.Component {
 
   render() {
     const { favoriteList, setFavorite, favoriteIds, results } = this.props
-
+          
     return (
-      <>
-      <button onClick={()=>{console.log(this.props.keyword)}}>{this.props.keyword}</button>
-      <h1>Favorites:</h1>
-        <div>{favoriteList && favoriteList.map((el, key) => {
-          return (
-            <span key={key} onClick={()=>setFavorite(el)}>
-              {el.title ? el.title : el.name}
-            </span>
-          )
-        })}</div>
-      
-      <SearchField results={results} setResults={(obj)=>this.setState(obj)} loading={this.state.loading}/>
+      <div className='app'> 
+        <button onClick={()=>{console.log(this.props.keyword)}}>{this.props.keyword}</button>
+        <h1>Favorites:</h1>
+          <div>{favoriteList && favoriteList.map((el, key) => {
+            return (
+              <span key={key} onClick={()=>setFavorite(el)}>
+                {el.title ? el.title : el.name}
+              </span>
+            )
+          })}</div>
+        
+        <SearchField results={results} setResults={(obj)=>this.setState(obj)} loading={this.state.loading}/>
 
-        <h1>Movies:</h1>
+          <h1>Movies:</h1>
 
 
-        <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 
-          addFavorite={setFavorite} favoritesIds={favoriteIds} />
-      </>
+          <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 
+            addFavorite={setFavorite} favoritesIds={favoriteIds} />
+      </div>
     )
   }
 }
