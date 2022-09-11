@@ -56,8 +56,7 @@ class App extends React.Component {
           
     return (
       <div className='app'> 
-        <button onClick={()=>{console.log(this.props.keyword)}}>{this.props.keyword}</button>
-        <h1>Favorites:</h1>
+        {/* <h1>Favorites:</h1>
           <div>{favoriteList && favoriteList.map((el, key) => {
             return (
               <span key={key} onClick={()=>setFavorite(el)}>
@@ -68,7 +67,7 @@ class App extends React.Component {
         
         <SearchField results={results} setResults={(obj)=>this.setState(obj)} loading={this.state.loading}/>
 
-          <h1>Movies:</h1>
+          <h1>Movies:</h1> */}
 
 
           <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 

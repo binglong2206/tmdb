@@ -1,6 +1,4 @@
 import React, { useRef, useCallback } from 'react'
-import Posters from './Posters'
-import './styles/Row.css'
 
 export default function Gallery({results, nextPage, loading, addFavorite, favoritesIds}) {
 
@@ -8,6 +6,8 @@ export default function Gallery({results, nextPage, loading, addFavorite, favori
 
   // New Ref will trigger callback
   const lastRef = useCallback(e => {
+    console.log('THIS ONE', e)
+
     // Disconnect and reconnect to existing element
     if (observer.current) observer.current.disconnect()
     observer.current = new IntersectionObserver(entries => {
@@ -21,37 +21,7 @@ export default function Gallery({results, nextPage, loading, addFavorite, favori
 
   return (
     <>
-      <Posters results={results} lastRef={lastRef} />
-      {/* <section>
-        <h1>Trending:</h1>
-        <div className="container">
-          {results && results.map((el, key) => { 
-            if (key + 1 === results.length) {
-              return (
-                <div className='img_container' key={key} ref={lastRef}>
-                  <div className='img_details'>
-                      <img 
-                        className='img_poster'
-                        src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} 
-                        alt='poster'/>
-                  </div>
-                </div>
-              ) 
-            } 
-            return (
-              <div className='img_container' key={key}>
-                <div className='img_details'>
-                    <img 
-                      className='img_poster'
-                      src={`https://image.tmdb.org/t/p/original/${el.poster_path}`} 
-                      alt='poster'/>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-      </section> */}
-      {/* <div>{results && results.map((el, key) => {
+      <div>{results && results.map((el, key) => {
           if (key + 1 === results.length) {
             return (
               <div key={key} ref={lastRef} idd={el.id} onClick={()=>addFavorite(el)} className={`${favoritesIds[el.id] && 'favorite'}`}
@@ -67,7 +37,7 @@ export default function Gallery({results, nextPage, loading, addFavorite, favori
               {el.title ? el.title : el.name}
             </div>
           )
-        })}</div> */}
+        })}</div>
       {loading && <h1>LOADING</h1>}
     </>
   )
