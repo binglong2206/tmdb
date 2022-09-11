@@ -16,7 +16,10 @@ class App extends React.Component {
   }
 
   async componentDidMount() {
-    console.log('FETCHING...')
+    // Init data from localStorage
+    this.props.initFavorite()
+    
+    console.log('MOUNT FETCH...')
     await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(r => r.json())
       .then(data => {
@@ -24,15 +27,11 @@ class App extends React.Component {
         this.props.reset({results: data.results, keyword: ""} )
       })
       .catch(err => console.error(err))
-    
-    this.props.initFavorite()
-
   };
 
   nextPage = async () => {
       const {page, keyword} = this.props;
       try {
-        this.setState({loading: true})
         const res = (this.props.keyword === "") ?
             await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page+1}`) :
             await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&page=${page+1}`)
@@ -42,7 +41,7 @@ class App extends React.Component {
             throw new Error('custom error')
         } else {
           setTimeout(()=>{
-            this.props.addResults(data.results).then(()=>this.setState({loading: false}))
+            this.props.addResults(data.results)
           }, 2000)
         }
         } catch(e) {
