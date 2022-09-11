@@ -32,11 +32,13 @@ class App extends React.Component {
 
 
   nextPage = async () => {
+      const {page, keyword} = this.props;
+
       try {
         this.setState({loading: true})
         const res = (this.props.keyword === "") ?
-            await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${this.props.page+1}`) :
-            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${this.props.keyword}&page=${this.props.page + 1}`)
+            await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page+1}`) :
+            await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${keyword}&page=${page+1}`)
         const data = await res.json()
 
         if (data.success === false) {
@@ -53,9 +55,7 @@ class App extends React.Component {
 
 
 
-  render() {
-    // const { favoriteList, setFavorite, favoriteIds, results } = this.props
-          
+  render() {          
     return (
       <div className='app'> 
         <Hero />

@@ -1,6 +1,6 @@
 import React, { useRef, useCallback } from 'react'
 
-export default function Observer({nextPage, loading, children}) {
+export default function Observer({nextPage, children}) {
 
   const observer = useRef()
 
