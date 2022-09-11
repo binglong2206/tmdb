@@ -1,8 +1,9 @@
-section {
-  color: white
+.posters {
+  color: white;
+  width: 95%;
 }
 
-.container {
+.posters-wrap {
   display: flex;
   flex-flow: wrap;
   justify-content: center;
@@ -10,7 +11,7 @@ section {
 
 
 .img_container {
-  padding: 20px;
+  padding: 15px;
   display: block;
   flex: 0 0 16.66666667%;
   max-width: 0 0 16.66666667%;
@@ -29,7 +30,7 @@ section {
 }
 
 .img_poster:active {
-  transform: scale(1.04);
+  transform: scale(1.02);
 }
 
 

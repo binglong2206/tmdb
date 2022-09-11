@@ -1,4 +1,7 @@
 
+* {
+  margin: auto
+}
 .favorite {
   color: green;
 }

@@ -4,6 +4,7 @@ import { connect } from "react-redux"
 import { mapState, mapDispatch } from './stores/maps'
 import Gallery from './Gallery'
 import SearchField from './SearchField'
+import Hero from './Hero'
 
 
 class App extends React.Component {
@@ -56,22 +57,9 @@ class App extends React.Component {
           
     return (
       <div className='app'> 
-        {/* <h1>Favorites:</h1>
-          <div>{favoriteList && favoriteList.map((el, key) => {
-            return (
-              <span key={key} onClick={()=>setFavorite(el)}>
-                {el.title ? el.title : el.name}
-              </span>
-            )
-          })}</div>
-        
-        <SearchField results={results} setResults={(obj)=>this.setState(obj)} loading={this.state.loading}/>
-
-          <h1>Movies:</h1> */}
-
-
-          <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 
-            addFavorite={setFavorite} favoritesIds={favoriteIds} />
+        <Hero />
+        <Gallery results={results} nextPage={this.nextPage} loading={this.state.loading} 
+          addFavorite={setFavorite} favoritesIds={favoriteIds} />
       </div>
     )
   }
