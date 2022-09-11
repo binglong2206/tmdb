@@ -3,6 +3,8 @@ import "./styles/App.css"
 import { connect } from "react-redux"
 import { addFavorite, initFavorite } from './stores/favorites'
 import Test from './Gallery'
+import SearchField from './SearchField'
+
 
 class App extends React.Component {
   constructor(props){
@@ -17,7 +19,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     console.log('FETCHING...')
-    await fetch('https://api.themoviedb.org/3/trending/all/day?api_key=9570742c201707db7194bcae2c955bac')
+    await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}`)
       .then(r => r.json())
       .then(data => {
         if (data.success === false) throw new Error('custom error')
@@ -33,7 +35,7 @@ class App extends React.Component {
   nextPage = async () => {
     console.log('FETCHING...')
     this.setState({loading: true})
-    await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=9570742c201707db7194bcae2c955bac&page=${this.state.page + 1}`)
+    await fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${this.state.page + 1}`)
       .then(r => r.json())
       .then(data => {
         // console.log(data)
@@ -46,23 +48,40 @@ class App extends React.Component {
 
   }
 
+  startSearch = async () => {
+    console.log('SEARCHING...')
+    await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=dog&page=1&include_adult=false`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.success === false) throw new Error('custom error')
+        this.setState({results: data.results})
+      })
+      .catch(err => console.error(err))
+  }
+
+
+
   render() {
     const { results } = this.state
     const { favorites, addFavorite, favoritesIds } = this.props
 
     return (
       <>
+      <h1>Favorites:</h1>
+        <div>{favorites && favorites.map((el, key) => {
+          return (
+            <span key={key} onClick={()=>addFavorite(el)}>
+              {el.title ? el.title : el.name}
+            </span>
+          )
+        })}</div>
+      
+      <SearchField results={results} setResults={(obj)=>this.setState(obj)} />
+
         <h1>Movies:</h1>
         <Test results={results} nextPage={this.nextPage} loading={this.state.loading} addFavorite={addFavorite} favoritesIds={favoritesIds} />
 
-        <h1>Favorites:</h1>
-        <div>{favorites && favorites.map((el, key) => {
-          return (
-            <div key={key} onClick={()=>addFavorite(el)}>
-              {el.title ? el.title : el.name}
-            </div>
-          )
-        })}</div>
+        
         <button onClick={this.nextPage}>next page</button>
       </>
     )

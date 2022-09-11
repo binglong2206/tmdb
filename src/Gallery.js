@@ -24,7 +24,7 @@ export default function Gallery({results, nextPage, loading, addFavorite, favori
           if (key + 1 === results.length) {
             return (
               <div key={key} ref={lastRef} idd={el.id} onClick={()=>addFavorite(el)} className={`${favoritesIds[el.id] && 'favorite'}`}
-                style={{'font-size': '100px'}}
+                style={{'fontSize': '100px'}}
               >
                 {el.title ? el.title : el.name} LAST ONE
               </div>
@@ -32,7 +32,7 @@ export default function Gallery({results, nextPage, loading, addFavorite, favori
           }
           return (
             <div key={key} idd={el.id} onClick={()=>addFavorite(el)} className={`${favoritesIds[el.id] && 'favorite'}`}
-            style={{'font-size': '100px'}}>
+            style={{'fontSize': '100px'}}>
               {el.title ? el.title : el.name}
             </div>
           )
