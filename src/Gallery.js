@@ -37,7 +37,7 @@ export default function Gallery({results, nextPage, loading, addFavorite, favori
             </div>
           )
         })}</div>
-      {!loading && <h1>LOADING</h1>}
+      {loading && <h1>LOADING</h1>}
     </>
   )
 }

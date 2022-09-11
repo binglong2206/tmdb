@@ -66,7 +66,7 @@ class App extends React.Component {
           )
         })}</div>
       
-      <SearchField results={results} setResults={(obj)=>this.setState(obj)} />
+      <SearchField results={results} setResults={(obj)=>this.setState(obj)} loading={this.state.loading}/>
 
         <h1>Movies:</h1>
 

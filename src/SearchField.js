@@ -50,11 +50,15 @@ class SearchField extends React.Component {
         this.setState({searchText: e.target.value}, this.debouncedSearch()) // Dont set param here
     }
 
+    clearSearch = () => {
+        this.setState({searchText: ""}, this.debouncedSearch())
+    }
 
     render() {
         return (
             <>
                 <input value={this.state.searchText} onChange={this.handleChange} />
+                {this.props.keyword !== "" && <button onClick={this.clearSearch}>CLEAR</button>}
             </>
         )
     }
