@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
-import Debounce from './SearchField';
-import Hero from './Hero'
+import Debounce from './components/SearchField';
+import Hero from './components/Hero'
 import { Provider } from 'react-redux';
 import store from "./stores"
 import { BrowserRouter, Route, Routes } from 'react-router-dom' // Switch makes sure only one match gets rendered

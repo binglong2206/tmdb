@@ -19,7 +19,7 @@ export default function Observer({nextPage, children}) {
 
   return (
     <>
-      {React.cloneElement(children, {lastRef: lastRef, test:123})} {/**DONT NAME PROP "ref" */}
+      {React.cloneElement(children, {lastRef: lastRef, test:123})} {/**DONT NAME PROP "ref", clone to pass props*/}
     </>
   )
 }

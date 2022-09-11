@@ -1,5 +1,5 @@
 import React from "react";
-import { mapState, mapDispatch } from "./stores/maps";
+import { mapState, mapDispatch } from "../stores/maps";
 import { connect } from "react-redux";
 
 class SearchField extends React.Component {

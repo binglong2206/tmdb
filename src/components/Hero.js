@@ -1,6 +1,6 @@
 import React from "react";
 import SearchField from './SearchField'
-import './styles/Hero.css'
+import '../styles/Hero.css'
 
 
 class Hero extends React.Component {

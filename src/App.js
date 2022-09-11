@@ -3,9 +3,8 @@ import "./styles/App.css"
 import { connect } from "react-redux"
 import { mapState, mapDispatch } from './stores/maps'
 import Observer from './Observer'
-import SearchField from './SearchField'
-import Hero from './Hero'
-import Posters from './Posters'
+import Hero from './components/Hero'
+import Gallery from './components/Gallery'
 
 
 class App extends React.Component {
@@ -30,10 +29,8 @@ class App extends React.Component {
 
   };
 
-
   nextPage = async () => {
       const {page, keyword} = this.props;
-
       try {
         this.setState({loading: true})
         const res = (this.props.keyword === "") ?
@@ -54,13 +51,12 @@ class App extends React.Component {
   }
 
 
-
   render() {          
     return (
       <div className='app'> 
         <Hero />
         <Observer nextPage={this.nextPage}>
-          <Posters />
+          <Gallery />
         </Observer> 
       </div>
     )
