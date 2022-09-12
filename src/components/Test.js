@@ -15,8 +15,8 @@ class NavBar extends React.Component {
 
             <div className='main-tabs'>
               <button className='tab-btn'>tab1</button>
-              <button className='tab-btn'>tab1</button>
-              <button className='tab-btn'>tab1</button>
+              <button>tab1</button>
+              <button>tab1</button>
             </div>
           </div>
         </div>
