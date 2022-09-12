@@ -3,8 +3,9 @@ import '../styles/NavBar.css'
 import { mapState, mapDispatch } from "../stores/maps";
 import { connect } from "react-redux";
 import NavSearch from './NavSearch';
+import Card from './Card';
 
-class NavBar extends React.Component {
+class Gallery extends React.Component {
   render(){
     return(
       <> 
@@ -22,82 +23,12 @@ class NavBar extends React.Component {
                 <button class="tabs-btn">Favorites</button>
             </div>
           </div>
-        </div>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1> <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
-        <h1>oasijdoajs</h1>
 
+          <div className='posters-wrapper'>
+            <Card title={'asd'} release={777} lang={'EN'} rating={7} />
+          </div>
+        </div>
+        
       </section>
       </>
       
@@ -106,4 +37,4 @@ class NavBar extends React.Component {
 }
 
 
-export default connect(mapState, mapDispatch)(NavBar);
+export default connect(mapState, mapDispatch)(Gallery);
