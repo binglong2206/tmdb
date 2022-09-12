@@ -2,8 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
-import Debounce from './components/SearchField';
-import Hero from './components/Hero'
+import NavBar from './components/NavBar'
 import { Provider } from 'react-redux';
 import store from "./stores"
 import { BrowserRouter, Route, Routes } from 'react-router-dom' // Switch makes sure only one match gets rendered
@@ -16,9 +15,8 @@ root.render(
       <Provider store={store}> 
       <BrowserRouter>
         <Routes>
+          <Route path="/demo" element={<NavBar />} />
           <Route path="/" element={<App />} />
-          <Route path="/demo" element={<Debounce />} />
-          <Route path="/hero" element={<Hero />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
       </BrowserRouter>

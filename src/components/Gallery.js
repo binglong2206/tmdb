@@ -23,9 +23,7 @@ class Gallery extends React.Component {
       <section className='posters'>
         <div style={{fontSize: '56px', fontWeight:'bold'}} onClick={()=>this.setState({tab: 0})}>Trending</div>
         <div style={{fontSize: '56px', fontWeight:'bold', position: 'relative'}} onClick={()=>this.setState({tab: 1})}>
-          <div>yo</div>
-          <div style={{position: 'absolute', bottom:'33px', width: '450px', backgroundColor:'red'}}>MODAL</div>
-        </div>
+          favorite        </div>
 
         <div className="posters-wrap">
           {tab === 0 && results && results.map((el, key) => 

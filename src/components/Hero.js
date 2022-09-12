@@ -8,7 +8,7 @@ class Hero extends React.Component {
     return (
       <section className='hero' 
         style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/Yrpb32j3eMpMVX7ND3TnOkHnbl.jpg)`
+        backgroundImage: `url(https://image.tmdb.org/t/p/original/as4jvr6PF7Wfs0RyUl5bOJcB3yt.jpg)`
       }}>
         <SearchField />
         <div className='fade'/>

@@ -10,7 +10,7 @@
 }
 
 
-.img_container {
+.img-container {
   padding: 15px;
   display: block;
   flex: 0 0 16.66666667%;
@@ -18,20 +18,20 @@
 
 }
 
-.img_details {
+.img-details {
   transition: transform 300ms;
 }
 
-.img_details:hover {
+.img-details:hover {
   cursor: pointer;
   transform: scale(1.06);
 }
 
-.img_details:active {
+.img-details:active {
   transform: scale(1.02);
 }
 
-.img_poster {
+.img-poster {
   width: 100%;
   object-fit: contain;
 }
@@ -39,7 +39,7 @@
 
 
 @media (max-width: 768px) {
-  .img_container {
+  .img-container {
     display: block;
     flex: 0 0 25%;
     max-width: 0 0 25%;
