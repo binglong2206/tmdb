@@ -3,14 +3,19 @@
 }
 
 .tabs .tabs-header div {
+  cursor: pointer;
+  color: white;
   font-size: 50px;
   position: relative;
   width: 25%;
   text-align: center;
-  z-index: 999;
+  z-index: 99;
   transition: all 300ms ease
 }
 
+.tabs-header .special {
+  display: block;
+}
 
 
 .tabs .tabs-slider {

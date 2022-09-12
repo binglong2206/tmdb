@@ -19,9 +19,9 @@ class Gallery extends React.Component {
     const {results, favoriteList, setFavorite, lastRef, tab, setTab} = this.props; // Connected from redux
 
     return (
-      <section className='posters' style={{margin: 'auto', paddingTop:'300px'}}>
-        <div style={{fontSize: '56px', fontWeight:'bold', position: 'relative'}} onClick={()=>setTab(1)}>favorite</div>
-
+      <> 
+      <div style={{color: 'white',fontSize: '56px', fontWeight:'bold', position: 'relative', marginTop: '300px'}}>Explore what's streaming</div>
+      <section className='posters' style={{margin: 'auto'}}>
         <div className="posters-wrap">
           {tab === 0 && results && results.map((el, key) => 
             <div key={key}>
@@ -35,8 +35,8 @@ class Gallery extends React.Component {
             </div>          
             )}
         </div>
-
       </section>
+      </>
     )
   }
 }

@@ -74,10 +74,6 @@ class NavSearch extends React.Component {
     this.setState({ searchText: e.target.value }, this.debouncedSearch()); // Dont set param here
   };
 
-  // clearSearch = () => {
-  //   this.setState({ searchText: "" }, this.debouncedSearch());
-  // };
-
   onSubmit = (e) => {
     e.preventDefault();
     this.setState({search: false});
@@ -91,8 +87,8 @@ class NavSearch extends React.Component {
 
     return history.map((el, key) => 
       <div key={key} onClick={()=>{
+        this.setState({searchText:el, search: false})
         this.props.setFetching(true)
-        this.setState({searchText:el})
         this.newSearch(el) // Trigger fetch here cus' setState wont
       }}>{el}</div>
     )
@@ -100,8 +96,8 @@ class NavSearch extends React.Component {
   }
 
   resetSearch = () => {
-    this.props.setFetching(true)
     this.setState({ search: false, searchText: "" });
+    this.props.setFetching(true)
     this.newSearch("")
   }
 

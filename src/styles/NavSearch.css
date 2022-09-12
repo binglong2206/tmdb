@@ -132,7 +132,7 @@ nav .desktop-nav div:hover {
 
 .overlay.show {
   position: fixed;
-  background: rgba(0, 0, 0, 0.48);
+  /* background: rgba(0, 0, 0, 0.48); */
   width: 100%;
   height: 100vh;
   left: 0;
