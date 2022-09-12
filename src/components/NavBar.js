@@ -27,7 +27,7 @@ const {search} = this.state
         </nav>
 
         <div class={`search-container ${!search && 'hide'}`}>
-          <div class="link-search"></div>
+          <div class="link-search" />
           <div class="search-bar">
             <div className="input-container">
               <input type="text" placeholder="Search for your favorite movies" />

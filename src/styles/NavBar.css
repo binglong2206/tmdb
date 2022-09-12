@@ -30,13 +30,6 @@ nav .desktop-nav {
   list-style: none;
 }
 
-nav .desktop-nav li a {
-  color: #fff;
-  text-decoration: none;
-  font-size: 14px;
-  opacity: 0.8;
-  transition: opacity 400ms;
-}
 
 nav .desktop-nav div {
   color: white;
@@ -46,9 +39,7 @@ nav .desktop-nav div {
   transition: opacity 400ms;
 }
 
-nav .desktop-nav li a:hover {
-  opacity: 1;
-}
+
 
 nav .desktop-nav div:hover {
   opacity: 1;
@@ -190,5 +181,58 @@ nav .desktop-nav div:hover {
   transition: all 400ms ease;
 }
 
+
+/** Search Container animations */
+
+.search-container .input-container,
+.search-container .link-search {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 400ms ease;
+    transition-delay: 300ms;
+}
+
+.search-container.hide .input-container,
+.search-container.hide .link-search {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.search-container .link-search {
+    opacity: 0.6;
+}
+
+.search-container.hide .link-close {
+    opacity: 0;
+}
+
+.search-container .link-close {
+    opacity: 0.5;
+    transition: all 400ms ease;
+    transition-delay: 400ms;
+}
+
+.search-container.hide .quick-links h2 {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+.search-container .quick-links h2 {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 400ms ease;
+    transition-delay: 100ms;
+}
+
+.search-container.hide .quick-links .links-container div {
+    transform: translateX(60px);
+    opacity: 0;
+}
+
+.search-container .quick-links .links-container div {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all 400ms ease;
+}
 
 
