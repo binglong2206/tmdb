@@ -71,8 +71,10 @@ nav .desktop-nav div:hover {
 
 
 .search-container.hide {
-  opacity: 0;
+  opacity: 1;
+  width: 20%;
   pointer-events: none;
+  background-color: blue;
 }
 
 .search-container {
@@ -80,10 +82,12 @@ nav .desktop-nav div:hover {
   margin: 0 auto;
   padding: 0 42px;
   position: fixed;
-  top: 0;
+  top: 50; /*0*/
   left: 0;
   right: 0;
   z-index: 9999;
+  background-color: red;
+  transition: width 400ms ease;
 }
 
 .search-container .link-search {
@@ -182,6 +186,7 @@ nav .desktop-nav div:hover {
 }
 
 
+
 /** Search Container animations */
 
 .search-container .input-container,
@@ -194,7 +199,7 @@ nav .desktop-nav div:hover {
 
 .search-container.hide .input-container,
 .search-container.hide .link-search {
-    opacity: 0;
+    opacity: 1;
     transform: translateX(50px);
 }
 
