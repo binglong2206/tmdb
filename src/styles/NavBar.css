@@ -73,25 +73,37 @@ nav .desktop-nav div:hover {
 .search-container.hide {
   opacity: 1;
   width: 30%;
+  padding: 0 10px;
+  margin: 12px auto;
+
   /* pointer-events: none; */
   z-index: 9999;
+
 }
 
 .search-container {
-  width: 60%;
-  margin: 0 auto;
-  padding: 0 42px;
+  width: 40%;
+  margin: 12px auto;
+  padding: 0 50px;
   position: fixed;
   top: 0; /*0*/
   left: 0;
   right: 0;
   z-index: 9999;
   transition: width 400ms ease;
+  border: 2px solid red;
+  border-radius: 10px;
 }
 
 .search-container .link-search {
   position: absolute;
-  left: 12px;
+  left: 15px;
+  opacity: 0.5;
+}
+
+.search-container.hide .link-search {
+  position: absolute;
+  left: -22px;
   opacity: 0.5;
 }
 
@@ -141,15 +153,16 @@ nav .desktop-nav div:hover {
   position: absolute;
   left: 0;
   right: 0;
+  margin-top: 1px;
   padding: 16px 8px;
-  border-radius: 0 0 10px 10px;
+  border-radius: 5px
 }
 
 .search-container .quick-links h2 {
   text-transform: uppercase;
   font-size: 12px;
   color: #6e6e73;
-  margin: 0 32px;
+  margin: 0 25px;
   margin-top: 10px;
 }
 
@@ -162,7 +175,7 @@ nav .desktop-nav div:hover {
   cursor: pointer;
   display: inline-block;
   width: 100%;
-  padding: 8px 50px;
+  padding: 8px 36px;
   font-size: 14px;
   color: #1d1d1f;
   text-decoration: none;
@@ -184,6 +197,13 @@ nav .desktop-nav div:hover {
   transition: all 400ms ease;
 }
 
+.search-container.hide .quick-links {
+  opacity: 0!important;
+  pointer-events: none;
+  transition: all 400ms ease;
+}
+
+
 
 
 /** Search Container animations */
@@ -193,7 +213,7 @@ nav .desktop-nav div:hover {
     opacity: 1;
     transform: translateX(0);
     transition: all 400ms ease;
-    transition-delay: 300ms;
+    /* transition-delay: 300ms; */
 }
 
 .search-container.hide .input-container,
@@ -225,7 +245,7 @@ nav .desktop-nav div:hover {
     opacity: 1;
     transform: translateX(0);
     transition: all 400ms ease;
-    transition-delay: 100ms;
+    /* transition-delay: 100ms; */
 }
 
 .search-container.hide .quick-links .links-container div {

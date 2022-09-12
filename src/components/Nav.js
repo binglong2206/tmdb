@@ -1,11 +1,15 @@
 import React from "react";
 import "../styles/NavBar.css";
+import {connect} from 'react-redux'
+import { mapState, mapDispatch } from '../stores/maps'
 
-class NavBar extends React.Component {
+
+class Nav extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      search: false
+      search: false,
+      overlay: false
     }
   }
 
@@ -18,7 +22,7 @@ class NavBar extends React.Component {
 
 
   render() {
-    const {search} = this.state
+    const { search } = this.state
 
  
     return (
@@ -27,11 +31,11 @@ class NavBar extends React.Component {
         <nav>
           <div className={`desktop-nav ${search && 'hide'}`}>
             <div>LOGO</div>
-            {/* <div className='link-search' /> */}
             <div>Data Provided By TMDB</div>
           </div>
         </nav>
 
+        {/** Set SearchContainer absolute FOR NOW, easier to manage anaimation. */}
         <div className={`search-container ${!search && 'hide'}`} onClick={this.searchListener()}  >
           <div className="link-search" />
           <div className="search-bar">
@@ -58,4 +62,4 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+export default connect(mapState,mapDispatch)(Nav)

@@ -5,6 +5,7 @@ import { mapState, mapDispatch } from './stores/maps'
 import Observer from './Observer'
 import Hero from './components/Hero'
 import Gallery from './components/Gallery'
+import Nav from './components/Nav'
 
 
 class App extends React.Component {
@@ -53,6 +54,7 @@ class App extends React.Component {
   render() {          
     return (
       <div className='app'> 
+        <Nav />
         <Hero />
         <Observer nextPage={this.nextPage}>
           <Gallery />
