@@ -22,3 +22,16 @@ code {
     monospace;
 }
 
+li { list-style: none; }
+
+a { text-decoration: none; }
+
+html {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body { background: #111; }
+
+body.active { overflow: hidden; }
+
