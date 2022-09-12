@@ -9,24 +9,30 @@ class NavBar extends React.Component {
     }
   }
 
+  searchListener = () => {
+    if (this.state.search) return null;
+
+    const setSearch = () => this.setState({search: true});
+    return setSearch
+  }
+
 
   render() {
+    const {search} = this.state
 
-
-const {search} = this.state
-
+ 
     return (
       <> 
       <div className="nav-container">
         <nav>
           <div className={`desktop-nav ${search && 'hide'}`}>
             <div>LOGO</div>
-            <div className='link-search' onClick={()=>this.setState({search:true})} />
+            {/* <div className='link-search' /> */}
             <div>Data Provided By TMDB</div>
           </div>
         </nav>
 
-        <div className={`search-container ${!search && 'hide'}`} onClick={()=>this.setState({search:true})}>
+        <div className={`search-container ${!search && 'hide'}`} onClick={this.searchListener()}  >
           <div className="link-search" />
           <div className="search-bar">
             <div className="input-container">
@@ -46,7 +52,7 @@ const {search} = this.state
         </div>
 
       </div>
-    <div class={`overlay ${search && 'show'}`} onClick={()=>this.setState({search:false})}></div>
+    <div className={`overlay ${search && 'show'}`} onClick={()=>this.setState({search:false})}></div>
     </>
     );
   }
