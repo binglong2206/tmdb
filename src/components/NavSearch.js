@@ -20,6 +20,11 @@ class NavSearch extends React.Component {
   };
 
   newSearch = async (keyword) => {
+    if (keyword !== "") {
+      localStorage.setItem('tmdb_history', JSON.stringify([keyword, ...this.props.searchHistory.slice(0,4)]))
+      this.props.addHistory(keyword)
+    }
+
     try {
       const res =
         keyword === ""
@@ -69,6 +74,23 @@ class NavSearch extends React.Component {
     this.setState({ searchText: "" }, this.debouncedSearch());
   };
 
+  onSubmit = (e) => {
+    e.preventDefault();
+    this.setState({search: false});
+  }
+
+  displayHistory = () => {
+    // Data is stored reverse chrono and limit to 5
+    const history = this.props.searchHistory
+
+    if (history.length === 0) return [];
+
+    return history.map((el, key) => 
+      <div key={key} onClick={this.newSearch(el)}>{el}</div>
+    )
+  
+  }
+
 
 
   render() {
@@ -96,6 +118,7 @@ class NavSearch extends React.Component {
                 <form onSubmit={(e)=> {
                   e.preventDefault();
                   this.setState({search: false})
+                  console.log(this.props.searchHistory)
                 }}>
                   <input
                     type="text"
@@ -114,12 +137,7 @@ class NavSearch extends React.Component {
             <div className="quick-links">
               <h2>Search History: </h2>
               <div className="links-container">
-                <div onClick={() => this.setState({ search: false })}>
-                  keyword1
-                </div>
-                <div onClick={() => this.setState({ search: false })}>
-                  keyword2
-                </div>
+                {this.displayHistory()}
               </div>
             </div>
           </div>

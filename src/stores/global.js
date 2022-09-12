@@ -11,6 +11,7 @@ export const globalSlice = createSlice({
     keyword: "",
     tab: 0, // Allow search component to switch tab 
     isFetching: false, // Temporary name
+    searchHistory: [], // Just misc feature
   },
   // Redux Doc says can mutate directly via createSlice
   reducers: {
@@ -36,8 +37,13 @@ export const globalSlice = createSlice({
     initFavorite: (state) => {
       const localList = JSON.parse(localStorage.getItem('tmdb_favorites'))
       const localIds = JSON.parse(localStorage.getItem('tmdb_favoritesIds'))
+      const localSearch = JSON.parse(localStorage.getItem('tmdb_history')) // Will rename initFavorite
+      state.searchHistory = localSearch ? localSearch : []; 
       state.favoriteList = localList ? localList : []; // Incase user clear localstore
       state.favoriteIds = localIds ? localIds : {};
+    },
+    addHistory: (state, action) => {
+      state.searchHistory = [action.payload, ...state.searchHistory.slice(0,4)]
     },
     setFavorite: (state, action) => {
       const media = action.payload; //  For readability
@@ -63,6 +69,6 @@ export const globalSlice = createSlice({
   },
 })
 
-export const { setFavorite, initFavorite, reset, addResults, switchTab, setFetching } = globalSlice.actions
+export const { setFavorite, initFavorite, reset, addResults, switchTab, setFetching, addHistory } = globalSlice.actions
 
 export default globalSlice.reducer
