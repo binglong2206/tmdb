@@ -1,5 +1,6 @@
 
 .poster-card {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -20,8 +21,9 @@
 
 .poster-card .poster-banner:hover {
   background: rgb(152, 152, 152); /*For poster fallback */
-  transform: scale(1.03);
+  /* transform: scale(1.03); */
 }
+
 
 .poster-card .poster-banner:active {
   transform: scale(1.06);
@@ -69,4 +71,44 @@
   color: white;
   font-size: 12px;
   font-weight: 500
+}
+
+.poster-card .badge {
+  position: absolute;
+  cursor: pointer;
+  color: blue;
+  top: 0px;
+  right: 20px;
+  transition: all 500ms ease;
+}
+
+
+.poster-card .badge .badge-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.poster-card .badge .badge-btn {
+  cursor: pointer;
+  font-size: 15px;
+  background-color: rgba(0, 0, 0, 0.50);
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 20px;
+  color:white
+
+}
+
+.poster-card .badge:active {
+  transform: scale(2.0);
+}
+
+.badge-fadeIn {
+  animation: fadeInAnimation 200ms;
+}
+
+@keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
