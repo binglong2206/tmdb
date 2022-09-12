@@ -220,7 +220,7 @@ nav .desktop-nav div:hover {
     opacity: 0.6;
 }
 
-.search-container.hide .link-close {
+.search-container.hide .link-close.hide-close {
     opacity: 0;
 }
 

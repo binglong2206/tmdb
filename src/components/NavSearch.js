@@ -44,14 +44,13 @@ class NavSearch extends React.Component {
         throw new Error("custom error");
       } else {
         this.props.reset({ results: data.results, keyword: keyword });
-        this.props.switchTabs()
-        this.props.setFetching(false) 
-        this.setState({search:false})
+        this.props.setFetching(false)
+        if (this.state.search) this.setState({search:false})
       }
     } catch (e) {
       this.setState({search: false})
       this.props.setFetching(false) // Setting here again because TMDB fetch error unpredicted
-      console.error("CUSTOM ERROR");
+      console.error('CUUSAIODNS');
     }
   };
 
@@ -75,9 +74,9 @@ class NavSearch extends React.Component {
     this.setState({ searchText: e.target.value }, this.debouncedSearch()); // Dont set param here
   };
 
-  clearSearch = () => {
-    this.setState({ searchText: "" }, this.debouncedSearch());
-  };
+  // clearSearch = () => {
+  //   this.setState({ searchText: "" }, this.debouncedSearch());
+  // };
 
   onSubmit = (e) => {
     e.preventDefault();
@@ -100,11 +99,17 @@ class NavSearch extends React.Component {
   
   }
 
+  resetSearch = () => {
+    this.props.setFetching(true)
+    this.setState({ search: false, searchText: "" });
+    this.newSearch("")
+  }
+
 
 
   render() {
     const { isFetching } = this.props
-    const { search } = this.state;
+    const { search, searchText } = this.state;
 
     return (
       <>
@@ -139,8 +144,8 @@ class NavSearch extends React.Component {
             </div>
             {isFetching && <h1>LOADING</h1> }
             <div
-              className="link-close"
-              onClick={() => this.setState({ search: false })}
+              className={`link-close ${searchText === "" && 'hide-close'}`}
+              onClick={this.resetSearch}
             />
 
             <div className="quick-links">
