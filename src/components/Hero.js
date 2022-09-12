@@ -1,6 +1,7 @@
 import React from "react";
 import SearchField from './SearchField'
 import '../styles/Hero.css'
+import bg from '../styles/images/bg.jpg'
 
 
 class Hero extends React.Component {
@@ -8,9 +9,9 @@ class Hero extends React.Component {
     return (
       <section className='hero' 
         style={{
-        backgroundImage: `url(https://image.tmdb.org/t/p/original/as4jvr6PF7Wfs0RyUl5bOJcB3yt.jpg)`
+        backgroundImage: `url(${bg})`,
+        marginBottom: '-275px'
       }}>
-        <SearchField />
         <div className='fade'/>
       </section>
     )

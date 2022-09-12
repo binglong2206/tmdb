@@ -55,7 +55,7 @@ class App extends React.Component {
     return (
       <div className='app'> 
         <Nav />
-        {/* <Hero /> */}
+        <Hero />
         <Observer nextPage={this.nextPage}>
           <Gallery />
         </Observer> 

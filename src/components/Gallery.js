@@ -26,7 +26,7 @@ class Gallery extends React.Component {
             fontSize: "56px",
             fontWeight: "bold",
             position: "relative",
-            marginTop: "300px",
+            // marginTop: "300px",
           }}
           className='fadeIn'
         >

@@ -1,26 +1,36 @@
 
 .nav-container {
-  background: black;
   z-index: 99999;
+  background: blue;
+  /* height: 150px; */
   position: fixed;
   left: 0;
   top: 0;
   right: 0;
+  /* border-radius: 20px; */
+  transition: all 400ms ease;
 }
 
-.nav-container nav {
+/* 
+.nav-container.nav-scroll {
+  height: 86px;
+  background: rgba(0, 0, 0, 0.50);
+  background: red;
+  border-radius: 20px;
+} */
+
+/* .nav-container nav {
   width: 1000px;
   margin: 0 auto;
   padding: 0 8px;
   height: 100%;
-}
+} */
 
 nav .desktop-nav {
   display: flex;
-  height: 70px;
+  height: 100px;
   justify-content: space-between;
   align-items: center;
-  list-style: none;
 }
 
 
@@ -67,25 +77,37 @@ nav .desktop-nav div:hover {
   opacity: 1;
   width: 30%;
   padding: 0 10px;
-  margin: 12px auto;
-
+  margin: 70px auto;
+  /* margin-top: 25px; */
   /* pointer-events: none; */
   z-index: 9999;
+  transition: all 400ms ease
+}
 
+.search-container.hide.nav-scroll {
+  margin: 20px auto;
+  background: black;
+  color: white
 }
 
 .search-container {
   width: 40%;
-  margin: 12px auto;
+  margin: 70px auto;
   padding: 0 50px;
   position: fixed;
-  top: 0; /*0*/
+  top: 0; 
   left: 0;
   right: 0;
   z-index: 9999;
-  transition: width 400ms ease;
-  border: 2px solid red;
+  transition: all 400ms ease;
+  border: 2px solid rgb(99, 99, 99);
   border-radius: 10px;
+}
+
+.search-container.nav-scroll {
+  margin: 20px auto;
+  background: black;
+  color: white;
 }
 
 .search-container .link-search {
@@ -177,8 +199,8 @@ nav .desktop-nav div:hover {
 }
 
 .search-container .quick-links .links-container div:hover {
-  /* background: #f5f5f5; */
-  color: #fff;
+  background: #3b3b3b;
+  color: rgb(196, 196, 196);
 }
 
 .desktop-nav.hide div {

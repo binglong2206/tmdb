@@ -9,8 +9,21 @@ class NavSearch extends React.Component {
     this.state = {
       search: false,
       searchText: "",
+      navScroll: false
     };
   }
+
+  changeNavColor = () => {
+    if (window.scrollY >= 90) {
+      this.setState({navScroll: true})
+    } else this.setState({navScroll: false});
+  }
+
+
+  componentDidMount() {
+    window.addEventListener('scroll', this.changeNavColor )
+  }
+
 
   searchListener = () => {
     if (this.state.search) return null;
@@ -105,21 +118,21 @@ class NavSearch extends React.Component {
 
   render() {
     const { isFetching } = this.props
-    const { search, searchText } = this.state;
+    const { search, searchText, navScroll } = this.state;
 
     return (
       <>
-        <div className="main-nav nav-container fadeIn">
-          <nav>
+        <div className={`main-nav nav-container fadeIn ${navScroll && 'nav-scroll'}`}>
+          {/* <nav>
             <div className={`desktop-nav ${search && "hide"}`}>
               <div>LOGO</div>
-              <div>Data Provided By TMDB</div>
+              <div>Data Provided By TMDB....</div>
             </div>
-          </nav>
+          </nav> */}
 
           {/** Set SearchContainer absolute FOR NOW, easier to manage animation. */}
           <div
-            className={`search-container ${!search && "hide"}`}
+            className={`search-container ${!search && "hide"} ${navScroll && 'nav-scroll'}`}
             onClick={this.searchListener()}
           >
             <div className="link-search" />
@@ -138,7 +151,7 @@ class NavSearch extends React.Component {
                 </form>
               </div>
             </div>
-            {isFetching && <h1>LOADING</h1> }
+            {/* {isFetching && <h1>LOADING</h1> } */}
             <div
               className={`link-close ${searchText === "" && 'hide-close'}`}
               onClick={this.resetSearch}
