@@ -109,7 +109,7 @@ class NavSearch extends React.Component {
 
     return (
       <>
-        <div className="main-nav nav-container">
+        <div className="main-nav nav-container fadeIn">
           <nav>
             <div className={`desktop-nav ${search && "hide"}`}>
               <div>LOGO</div>

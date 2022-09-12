@@ -23,14 +23,14 @@ class Tabs extends React.Component {
     const { tab, setTab } = this.props;
 
     return (
-      <div className="tabs">
+      <div className="tabs fadeIn">
         {tab < 4 ? (
           <>
             <div className="tabs-header">
-              <div onClick={() => setTab(0)}>tab1</div>
-              <div onClick={() => setTab(1)}>tab2</div>
-              <div onClick={() => setTab(2)}>tab3</div>
-              <div onClick={() => setTab(3)}>tab4</div>
+              <div onClick={() => setTab(0)}>Movies</div>
+              <div onClick={() => setTab(1)}>Favorites</div>
+              {/* <div onClick={() => setTab(2)}>tab3</div>
+              <div onClick={() => setTab(3)}>Favorites</div> */}
             </div>
             <div className="tabs-slider" {...this.getTabStyle()} />
           </>

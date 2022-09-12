@@ -1,6 +1,12 @@
-.tabs .tabs-header {
-  display: flex
+.tabs {
+  position: relative;
 }
+
+.tabs .tabs-header {
+  display: flex;
+  /* position: relative */
+}
+
 
 .tabs .tabs-header div {
   cursor: pointer;
@@ -20,8 +26,8 @@
 
 .tabs .tabs-slider {
   position: absolute;
+  left: 0;
   width: calc(25% - 5px);
-  left: calc(calc(calc(25% - 5px) * 0 ) + 10px); /* Works hand-in-hand with width*/
   height: 40px;
   background: lightcoral;
   top: 10px;

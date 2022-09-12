@@ -6,6 +6,12 @@
     box-sizing: border-box;
 }
 
-.favorite {
-  color: green;
+
+.fadeIn {
+  animation: fadeInAnimation 1s;
+}
+
+@keyframes fadeInAnimation {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

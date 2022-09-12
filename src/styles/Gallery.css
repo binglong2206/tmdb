@@ -11,7 +11,7 @@
 
 
 .img-container {
-  padding: 15px;
+  padding: 25px; /*set imgsize*/
   display: block;
   flex: 0 0 16.66666667%;
   max-width: 0 0 16.66666667%;
@@ -19,6 +19,11 @@
 }
 
 .img-details {
+  /* margin: auto; not sure why no work*/
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
   transition: transform 300ms;
 }
 
