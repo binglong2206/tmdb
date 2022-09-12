@@ -1,26 +1,35 @@
 import React from "react";
+import '../styles/Card.css'
+import {BsBookmarkPlus} from 'react-icons/bs'
 
 export default class Card extends React.Component {
 
   render() {
-    const {title, release, lang, rating, source} = this.props
+    const {title, release, lang, rating, source, mapKey} = this.props
 
     return (
-      <div class="poster-card">
-          <figure class="poster-banner">
+      <div className="poster-card" mapKey={mapKey}>
+          <div className="poster-banner">
             <img
               src={source}
               alt={title + " poster"}
             />
-          </figure>
+          </div>
 
-        <div class="titles">
-          <h3 class="poster-title">{title}</h3>
-          <div>{release}</div>
+        <div className="titles">
+          <h3 className="poster-title">{title}</h3>
+          <div>{rating}</div>
         </div>
 
-        <div class="info">
-         
+        <div className="info">
+
+          <div className="rating">
+            <div>Release Date: {release}</div>
+          </div>
+          <div>{lang}</div>
+        </div>
+        <div className='badge'>
+          <BsBookmarkPlus color='blue' />
         </div>
       </div>
     );

@@ -1,0 +1,72 @@
+
+.poster-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.poster-card .poster-banner {
+  cursor: pointer;
+  position: relative;
+  background: grey; 
+  aspect-ratio: 2 / 3; /* for fallback*/
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: 300ms ease
+}
+
+
+.poster-card .poster-banner:hover {
+  background: rgb(152, 152, 152); /*For poster fallback */
+  transform: scale(1.03);
+}
+
+.poster-card .poster-banner:active {
+  transform: scale(1.06);
+}
+
+.poster-card .poster-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.poster-card .titles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 10px;
+}
+
+.poster-card .poster-title {
+  color: white;
+  font-size: 16px;
+}
+
+.poster-card .titles > div {
+  color: yellow;
+  font-size: 14px;
+  font-weight: 500
+}
+
+.poster-card .info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  color:white;
+}
+
+
+
+.poster-card .duration, .rating {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: white;
+  font-size: 12px;
+  font-weight: 500
+}

@@ -7,6 +7,8 @@ import Card from './Card';
 
 class Gallery extends React.Component {
   render(){
+    const { results } = this.props;
+
     return(
       <> 
       <NavSearch />
@@ -25,7 +27,12 @@ class Gallery extends React.Component {
           </div>
 
           <div className='posters-wrapper'>
-            <Card title={'asd'} release={777} lang={'EN'} rating={7} />
+            {[1,2,3,4,5,6,6,6,6,6].map((el, key) => 
+              <Card mapKey={key} title={'The Dark Knight Rises'} 
+                release={2018} lang={'EN'} rating={9.5}
+                source={'https://image.tmdb.org/t/p/w200/wquJChp0NpoqthYdE3YjXNNxvVC.jpg'}
+                />
+            )}
           </div>
         </div>
         
