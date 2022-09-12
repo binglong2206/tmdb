@@ -20,10 +20,9 @@ class Gallery extends React.Component {
     const { tab } = this.state
 
     return (
-      <section className='posters'>
+      <section className='posters' style={{margin: 'auto'}}>
         <div style={{fontSize: '56px', fontWeight:'bold'}} onClick={()=>this.setState({tab: 0})}>Trending</div>
-        <div style={{fontSize: '56px', fontWeight:'bold', position: 'relative'}} onClick={()=>this.setState({tab: 1})}>
-          favorite        </div>
+        <div style={{fontSize: '56px', fontWeight:'bold', position: 'relative'}} onClick={()=>this.setState({tab: 1})}>favorite</div>
 
         <div className="posters-wrap">
           {tab === 0 && results && results.map((el, key) => 

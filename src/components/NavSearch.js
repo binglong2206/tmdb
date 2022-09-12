@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/NavBar.css";
+import "../styles/NavSearch.css";
 import { connect } from "react-redux";
 import { mapState, mapDispatch } from "../stores/maps";
 
@@ -21,7 +21,6 @@ class NavSearch extends React.Component {
 
   newSearch = async (keyword) => {
     try {
-      console.log("SEARCHING...");
       const res =
         keyword === ""
           ? await fetch(
@@ -30,14 +29,18 @@ class NavSearch extends React.Component {
           : await fetch(
               `https://api.themoviedb.org/3/search/movie?api_key=9570742c201707db7194bcae2c955bac&query=${keyword}`
             );
-      const data = await res.json();
 
+     
+      const data = await res.json();
+      
       if (data.success === false) {
         throw new Error("custom error");
       } else {
         this.props.reset({ results: data.results, keyword: keyword });
+        this.props.setFetching(false) 
       }
     } catch (e) {
+      this.props.setFetching(false) // Setting here again because TMDB fetch error unpredicted
       console.error("CUSTOM ERROR");
     }
   };
@@ -58,6 +61,7 @@ class NavSearch extends React.Component {
 
   // Set state and callback to init debounce
   handleChange = (e) => {
+    this.props.setFetching(true) // Better user experience if loading starts here than fetch
     this.setState({ searchText: e.target.value }, this.debouncedSearch()); // Dont set param here
   };
 
@@ -65,12 +69,15 @@ class NavSearch extends React.Component {
     this.setState({ searchText: "" }, this.debouncedSearch());
   };
 
+
+
   render() {
+    const { isFetching } = this.props
     const { search } = this.state;
 
     return (
       <>
-        <div className="nav-container">
+        <div className="main-nav nav-container">
           <nav>
             <div className={`desktop-nav ${search && "hide"}`}>
               <div>LOGO</div>
@@ -78,7 +85,7 @@ class NavSearch extends React.Component {
             </div>
           </nav>
 
-          {/** Set SearchContainer absolute FOR NOW, easier to manage anaimation. */}
+          {/** Set SearchContainer absolute FOR NOW, easier to manage animation. */}
           <div
             className={`search-container ${!search && "hide"}`}
             onClick={this.searchListener()}
@@ -86,20 +93,26 @@ class NavSearch extends React.Component {
             <div className="link-search" />
             <div className="search-bar">
               <div className="input-container">
-                <input
-                  type="text"
-                  placeholder="Search for your favorite movies"
-                  value={this.state.searchText} onChange={this.handleChange}
-                />
+                <form onSubmit={(e)=> {
+                  e.preventDefault();
+                  this.setState({search: false})
+                }}>
+                  <input
+                    type="text"
+                    placeholder="Search for your favorite movies"
+                    value={this.state.searchText} onChange={this.handleChange}
+                  />
+                </form>
               </div>
             </div>
+            {isFetching && <h1>LOADING</h1> }
             <div
               className="link-close"
               onClick={() => this.setState({ search: false })}
             />
 
             <div className="quick-links">
-              <h2>Trending keyword</h2>
+              <h2>Search History: </h2>
               <div className="links-container">
                 <div onClick={() => this.setState({ search: false })}>
                   keyword1

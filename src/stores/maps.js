@@ -1,6 +1,6 @@
 import { setFavorite, initFavorite, reset, addResults, switchTab, setFetching } from './global'
 
-// Using one global store for now
+// Using one global store for now, can refactor into more efficient/specific maps once submit MVP
 export const mapState = (state) => {
     return {
       favoriteList: state.global.favoriteList,
@@ -9,7 +9,7 @@ export const mapState = (state) => {
       page: state.global.page,
       keyword: state.global.keyword,
       tab: state.global.tab,
-      fetching: state.fetching
+      isFetching: state.global.isFetching
     }
   }
   
@@ -20,7 +20,7 @@ export const mapDispatch = (dispatch) => {
       reset: (results)=> dispatch(reset(results)),
       addResults: (results) => dispatch(addResults(results)),
       switchTab: (payload) => dispatch(switchTab(payload)),
-      setFetching: () => dispatch(setFetching())
+      setFetching: (boolean) => dispatch(setFetching(boolean))
     }
   }
   

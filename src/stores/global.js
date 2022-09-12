@@ -10,7 +10,7 @@ export const globalSlice = createSlice({
     page: 1,
     keyword: "",
     tab: 0, // Allow search component to switch tab 
-    fetching: false, // Temporary
+    isFetching: false, // Temporary name
   },
   // Redux Doc says can mutate directly via createSlice
   reducers: {
@@ -27,8 +27,8 @@ export const globalSlice = createSlice({
       state.results = [...state.results, ...action.payload];
       state.page++ // Testing mutable state
     },
-    setFetching: (state) => {
-      state.fetching = !state.fetching
+    setFetching: (state, action) => {
+      state.isFetching = action.payload
     },
     switchTab: (state, action) => {
       state.tab = action.payload
