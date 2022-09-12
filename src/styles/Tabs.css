@@ -1,20 +1,20 @@
-.tabs-section {
+.tasbs-section {
   margin: 0
 }
 
-.tabs {
+.tabss {
   position: relative;
   /* background-color: red; */
   margin: auto;
 }
 
-.tabs .tabs-header {
+.tasbs .tabs-header {
   display: flex;
   /* position: relative */
 }
 
 
-.tabs .tabs-header div {
+.tasbs .tabs-header div {
   cursor: pointer;
   color: white;
   font-size: 2em;
@@ -30,7 +30,7 @@
 }
 
 
-.tabs .tabs-slider {
+.tabss .tabs-slider {
   position: absolute;
   left: 0;
   width: calc(40% - 5px);
