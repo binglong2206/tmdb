@@ -1,5 +1,11 @@
+.tabs-section {
+  margin: 0
+}
+
 .tabs {
   position: relative;
+  /* background-color: red; */
+  margin: auto;
 }
 
 .tabs .tabs-header {
@@ -11,9 +17,9 @@
 .tabs .tabs-header div {
   cursor: pointer;
   color: white;
-  font-size: 50px;
+  font-size: 2em;
   position: relative;
-  width: 25%;
+  padding: 0px 20px;
   text-align: center;
   z-index: 99;
   transition: all 300ms ease
@@ -27,8 +33,8 @@
 .tabs .tabs-slider {
   position: absolute;
   left: 0;
-  width: calc(25% - 5px);
-  height: 40px;
+  width: calc(40% - 5px);
+  height: 30px;
   background: lightcoral;
   top: 10px;
   border-radius: 10px;

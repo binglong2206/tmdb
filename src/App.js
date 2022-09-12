@@ -6,6 +6,7 @@ import Observer from './Observer'
 import Hero from './components/Hero'
 import Gallery from './components/Gallery'
 import Nav from './components/NavSearch'
+import Tabs from './components/Tabs'
 
 
 class App extends React.Component {

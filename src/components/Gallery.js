@@ -20,7 +20,8 @@ class Gallery extends React.Component {
 
     return (
       <>
-        <div
+
+        {/* <div
           style={{
             color: "white",
             fontSize: "56px",
@@ -30,12 +31,12 @@ class Gallery extends React.Component {
           }}
           className='fadeIn'
         >
-          Explore what's streaming
-        </div>
-        <div style={{ width: "50%" }}>
-          <Tabs />
-        </div>
+          Trending
+        </div> */}
+          
         <section className="posters" style={{ margin: "auto" }}>
+     
+          <Tabs />
           <div className="posters-wrap">  
             {tab === 0 && results && 
                 results.map((el, key) => (

@@ -6,7 +6,6 @@ export default class Poster extends React.Component {
     const {lastRef, setFavorite, el, mapKey, length } = this.props
 
     if (!lastRef) { // No ref means rendering for favorites
-
       // Adding FadeIn onto every el so fade when load
       return (
         <div className='fadeIn img-container'>

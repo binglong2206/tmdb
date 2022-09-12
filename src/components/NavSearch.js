@@ -24,6 +24,10 @@ class NavSearch extends React.Component {
     window.addEventListener('scroll', this.changeNavColor )
   }
 
+  componentWillUnmount(){
+    window.removeEventListener('scroll', this.changeNavColor)
+  }
+
 
   searchListener = () => {
     if (this.state.search) return null;

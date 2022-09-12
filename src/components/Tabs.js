@@ -14,7 +14,7 @@ class Tabs extends React.Component {
   getTabStyle = () => {
     return {
       style: {
-        left: `calc(calc(calc(25% - 5px) * ${this.props.tab} ) + 10px)`,
+        left: `calc(calc(calc(55% - 5px) * ${this.props.tab} ) + 10px)`,
       },
     };
   };
@@ -23,6 +23,7 @@ class Tabs extends React.Component {
     const { tab, setTab } = this.props;
 
     return (
+      <section className="tabs-section"> 
       <div className="tabs fadeIn">
         {tab < 4 ? (
           <>
@@ -32,12 +33,13 @@ class Tabs extends React.Component {
               {/* <div onClick={() => setTab(2)}>tab3</div>
               <div onClick={() => setTab(3)}>Favorites</div> */}
             </div>
-            <div className="tabs-slider" {...this.getTabStyle()} />
+            {/* <div className="tabs-slider" {...this.getTabStyle()} /> */}
           </>
         ) : (
           <div onClick={() => setTab(4)}>Search Results:</div>
         )}
       </div>
+      </section>
     );
   }
 }
