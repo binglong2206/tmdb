@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
 import Nav from './components/NavSearch'
+import Tabs from './components/Tabs';
 import { Provider } from 'react-redux';
 import store from "./stores"
 import { BrowserRouter, Route, Routes } from 'react-router-dom' // Switch makes sure only one match gets rendered
@@ -15,7 +16,7 @@ root.render(
       <Provider store={store}> 
       <BrowserRouter>
         <Routes>
-          <Route path="/demo" element={<Nav />} />
+          <Route path="/demo" element={<Tabs />} />
           <Route path="/" element={<App />} />
           <Route path="*" element={<h1>404</h1>} />
         </Routes>
