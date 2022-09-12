@@ -1,4 +1,4 @@
-import { setFavorite, initFavorite, reset, addResults, switchTab } from './global'
+import { setFavorite, initFavorite, reset, addResults, switchTab, setFetching } from './global'
 
 // Using one global store for now
 export const mapState = (state) => {
@@ -8,7 +8,8 @@ export const mapState = (state) => {
       results: state.global.results,
       page: state.global.page,
       keyword: state.global.keyword,
-      tab: state.global.tab
+      tab: state.global.tab,
+      fetching: state.fetching
     }
   }
   
@@ -18,7 +19,8 @@ export const mapDispatch = (dispatch) => {
       initFavorite: () => dispatch(initFavorite()),
       reset: (results)=> dispatch(reset(results)),
       addResults: (results) => dispatch(addResults(results)),
-      switchTab: (payload) => dispatch(switchTab(payload))
+      switchTab: (payload) => dispatch(switchTab(payload)),
+      setFetching: () => dispatch(setFetching())
     }
   }
   
