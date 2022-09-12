@@ -20,6 +20,8 @@ class NavSearch extends React.Component {
   };
 
   newSearch = async (keyword) => {
+    if (this.props.tab !== 0) this.props.setTab(0)
+
     if (keyword !== "") {
       localStorage.setItem('tmdb_history', JSON.stringify([keyword, ...this.props.searchHistory.slice(0,4)]))
       this.props.addHistory(keyword)
@@ -42,9 +44,12 @@ class NavSearch extends React.Component {
         throw new Error("custom error");
       } else {
         this.props.reset({ results: data.results, keyword: keyword });
+        this.props.switchTabs()
         this.props.setFetching(false) 
+        this.setState({search:false})
       }
     } catch (e) {
+      this.setState({search: false})
       this.props.setFetching(false) // Setting here again because TMDB fetch error unpredicted
       console.error("CUSTOM ERROR");
     }
@@ -86,7 +91,11 @@ class NavSearch extends React.Component {
     if (history.length === 0) return [];
 
     return history.map((el, key) => 
-      <div key={key} onClick={this.newSearch(el)}>{el}</div>
+      <div key={key} onClick={()=>{
+        this.props.setFetching(true)
+        this.setState({searchText:el})
+        this.newSearch(el) // Trigger fetch here cus' setState wont
+      }}>{el}</div>
     )
   
   }

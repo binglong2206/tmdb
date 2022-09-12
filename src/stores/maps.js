@@ -1,4 +1,4 @@
-import { setFavorite, initFavorite, reset, addResults, switchTab, setFetching, addHistory } from './global'
+import { setFavorite, initFavorite, reset, addResults, setTab, setFetching, addHistory } from './global'
 
 // Using one global store for now, can refactor into more efficient/specific maps once submit MVP
 export const mapState = (state) => {
@@ -20,7 +20,7 @@ export const mapDispatch = (dispatch) => {
       initFavorite: () => dispatch(initFavorite()),
       reset: (results)=> dispatch(reset(results)),
       addResults: (results) => dispatch(addResults(results)),
-      switchTab: (payload) => dispatch(switchTab(payload)),
+      setTab: (payload) => dispatch(setTab(payload)),
       setFetching: (boolean) => dispatch(setFetching(boolean)),
       addHistory: (value) => dispatch(addHistory(value))
     }

@@ -16,13 +16,11 @@ class Gallery extends React.Component {
 
 
   render() {
-    const {results, favoriteList, setFavorite, lastRef} = this.props; // Connected from redux
-    const { tab } = this.state
+    const {results, favoriteList, setFavorite, lastRef, tab, setTab} = this.props; // Connected from redux
 
     return (
-      <section className='posters' style={{margin: 'auto'}}>
-        <div style={{fontSize: '56px', fontWeight:'bold'}} onClick={()=>this.setState({tab: 0})}>Trending</div>
-        <div style={{fontSize: '56px', fontWeight:'bold', position: 'relative'}} onClick={()=>this.setState({tab: 1})}>favorite</div>
+      <section className='posters' style={{margin: 'auto', paddingTop:'300px'}}>
+        <div style={{fontSize: '56px', fontWeight:'bold', position: 'relative'}} onClick={()=>setTab(1)}>favorite</div>
 
         <div className="posters-wrap">
           {tab === 0 && results && results.map((el, key) => 

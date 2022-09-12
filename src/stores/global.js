@@ -31,7 +31,7 @@ export const globalSlice = createSlice({
     setFetching: (state, action) => {
       state.isFetching = action.payload
     },
-    switchTab: (state, action) => {
+    setTab: (state, action) => {
       state.tab = action.payload
     },
     initFavorite: (state) => {
@@ -69,6 +69,6 @@ export const globalSlice = createSlice({
   },
 })
 
-export const { setFavorite, initFavorite, reset, addResults, switchTab, setFetching, addHistory } = globalSlice.actions
+export const { setFavorite, initFavorite, reset, addResults, setTab, setFetching, addHistory } = globalSlice.actions
 
 export default globalSlice.reducer
