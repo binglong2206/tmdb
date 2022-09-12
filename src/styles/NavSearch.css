@@ -75,7 +75,7 @@ nav .desktop-nav div:hover {
 
 .search-container.hide {
   opacity: 1;
-  width: 30%;
+  width: 20%;
   padding: 0 10px;
   margin: 70px auto;
   /* margin-top: 25px; */
@@ -91,7 +91,7 @@ nav .desktop-nav div:hover {
 }
 
 .search-container {
-  width: 40%;
+  width: 30%;
   margin: 70px auto;
   padding: 0 50px;
   position: fixed;

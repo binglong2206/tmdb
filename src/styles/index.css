@@ -35,3 +35,9 @@ body { background: #111; }
 
 body.active { overflow: hidden; }
 
+.h1,
+.h2,
+.h3 {
+  color: #fff;
+  line-height: 1.2;
+}
