@@ -2,7 +2,7 @@ import React from "react";
 import '../styles/Card.css'
 import { mapState, mapDispatch } from "../stores/maps";
 import { connect } from "react-redux";
-import {BsBookmarkPlusFill, BsBookmarkDash, BsBookmarkPlus} from 'react-icons/bs'
+import {BsBookmarkPlusFill} from 'react-icons/bs'
 
 class Card extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class Card extends React.Component {
 
 
   render() {
-    const {title, release, lang, rating, source, editFavorite, favoriteIds, el, setFavorite} = this.props
+    const {title, release, rating, source, favoriteIds, el, setFavorite} = this.props
 
 
     return (
