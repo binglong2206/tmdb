@@ -19,9 +19,9 @@ class Gallery extends React.Component {
               <h2 class="h2 title">Trending Now:</h2>
             </div>
             <div class="tabs">
-                <button class="tabs-btn" onClick={()=>setTab(0)}>Movies</button>
+                <button class={`tabs-btn ${tab===0 && 'tab-active'}`} onClick={()=>setTab(0)}>Movies</button>
                 {/* <button class="tabs-btn">TV Shows</button> */}
-                <button class="tabs-btn" onClick={()=>setTab(1)}>Favorites</button>
+                <button class={`tabs-btn ${tab===1 && 'tab-active'}`} onClick={()=>setTab(1)}>Favorites</button>
             </div>
           </div>
 
@@ -32,9 +32,9 @@ class Gallery extends React.Component {
                   <div key={key} ref={lastRef} className='fadeIn'>
                     <Card 
                       title={el.title ? el.title : el.name} 
-                      release={el.release_date?.substring(0,4)} 
-                      lang={el.original_language?.toUpperCase()} 
-                      rating={el.vote_average}
+                      release={el.release_date.substring(0,4)} 
+                      lang={el.original_language.toUpperCase()} 
+                      rating={el.vote_average.toFixed(1)}
                       source={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
                       el={el}
                       />
@@ -46,7 +46,7 @@ class Gallery extends React.Component {
                       title={el.title ? el.title : el.name} 
                       release={el.release_date?.substring(0,4)} 
                       lang={el.original_language?.toUpperCase()} 
-                      rating={el.vote_average}
+                      rating={el.vote_average.toFixed(1)}
                       source={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
                       el={el}
                       />
@@ -61,7 +61,7 @@ class Gallery extends React.Component {
                   title={el.title ? el.title : el.name} 
                   release={el.release_date?.substring(0,4)} 
                   lang={el.original_language} 
-                  rating={el.vote_average}
+                  rating={el.vote_average.toFixed(1)}
                   source={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
                   el={el}
                   editFavorite={()=>setFavorite(el)}                 
