@@ -37,6 +37,7 @@ export const globalSlice = createSlice({
     // },
 
     setTab: (state, action) => {
+      if (state.error) state.error = ""; // Reset error when user retry
       state.tab = action.payload;
     },
 
