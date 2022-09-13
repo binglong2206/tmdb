@@ -3,20 +3,12 @@ import "./styles/App.css"
 import { connect } from "react-redux"
 import { mapState, mapDispatch } from './stores/maps'
 import Observer from './Observer'
-import Hero from './components/Hero'
 import SearchBar from './components/NavSearch'
-import Gallery from './components/Test'
-import Tabs from './components/Tabs'
+import Gallery from './components/Gallery'
 
 
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      loading: false
-    }
-  }
-
+ 
   async componentDidMount() {
     // Init data from localStorage
     this.props.initFavorite()
@@ -42,9 +34,7 @@ class App extends React.Component {
         if (data.success === false) {
             throw new Error('custom error')
         } else {
-        
             this.props.addResults(data.results)
-        
         }
         } catch(e) {
             console.error("CUSTOM ERROR")

@@ -1,53 +1,116 @@
-.posters {
-  color: white;
-  width: 95%;
+/** Common */
+
+.gallery {
+  padding-block: 55px;
 }
 
-.posters-wrap {
+.gallery .main-wrapper {
+  margin-bottom: 50px; 
+}
+
+.gallery .title {
+  margin-bottom: 30px; 
+}
+
+.tabs {
   display: flex;
-  width: 100%;
-  flex-flow: wrap;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
+  margin-top: 23px;
+  gap: 10px;
 }
 
-
-.img-container {
-  /* padding: 80px;  */
-  display: block;
-  /* width: 300px; */
-  /* padding: 130px; */
-}
-
-.img-details {
-
-  transition: transform 300ms;
-}
-
-.img-details:hover {
+.gallery .tabs-btn {
   cursor: pointer;
-  transform: scale(1.06);
+  color: white;
+  background: black;
+  font-size: 12px;
+  font-weight: 500;
+  border: 2px solid darkred;
+  padding: 12px 26px;
+  border-radius: 8px;
+  transition: all 200ms ease
 }
 
-.img-details:active {
-  transform: scale(1.02);
+.gallery .tabs-btn.tab-active {
+  background-color: darkred
 }
 
-.img-poster {
-  width: 100%;
-  object-fit: contain;
+.gallery .tabs-btn:hover {
+  border-color: darkred
 }
 
+.subtitle {
+  color:  white;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
+.title {
+  text-align: center; font-size: 32px;
+}
 
-@media (max-width: 768px) {
-  .img-container {
-    display: block;
-    flex: 0 0 25%;
-    max-width: 0 0 25%;
+.posters-wrapper {
+  display: grid;
+  gap: 50px;
+}
+
+@media (min-width: 550px) {
+  .container {
+    max-width: 540px;
+    margin-inline: auto;
   }
+  .posters-wrapper {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px 30px;
+  }
+
+  
+
 }
 
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
 
+}
 
+@media (min-width: 992px) {
 
+   .container { max-width: 960px; }
+
+   .gallery .main-wrapper {
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+   }
+ 
+   .gallery .subtitle, .title {
+    text-align: left;
+   }
+ 
+   .gallery .title {
+    margin-bottom: 0;
+   }
+
+   .posters-wrapper { 
+      grid-template-columns: repeat(3, 1fr);
+    }
+ 
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1320px; 
+  }
+  .posters-wrapper { 
+    grid-template-columns: repeat(4, 1fr); 
+  }
+} 
 

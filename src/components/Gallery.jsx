@@ -1,9 +1,8 @@
 import React from 'react'
-import '../styles/NavBar.css'
+import '../styles/Gallery.css'
 import Logo from '../styles/images/blue_short.svg'
 import { mapState, mapDispatch } from "../stores/maps";
 import { connect } from "react-redux";
-import NavSearch from './NavSearch';
 import Card from './Card';
 
 class Gallery extends React.Component {
@@ -12,18 +11,18 @@ class Gallery extends React.Component {
 
     return(
       <> 
-      <section class="gallery">
-        <div class="container">
-          <div class="main-wrapper">
-            <div class="titles">
-              <p class="subtitle">API Data provided & updated by:</p>
+      <section className="gallery">
+        <div className="container">
+          <div className="main-wrapper">
+            <div className="titles">
+              <p className="subtitle">API Data provided & updated by:</p>
               <img src={Logo} alt='tmdb-logo' />
-              {/* <h2 class="h2 title">Trending Now:</h2> */}
+              {/* <h2 className="h2 title">Trending Now:</h2> */}
             </div>
-            <div class="tabs">
-                <button class={`tabs-btn ${tab===0 && 'tab-active'}`} onClick={()=>setTab(0)}>Movies</button>
-                {/* <button class="tabs-btn">TV Shows</button> */}
-                <button class={`tabs-btn ${tab===1 && 'tab-active'}`} onClick={()=>setTab(1)}>Favorites</button>
+            <div className="tabs">
+                <button className={`tabs-btn ${tab===0 && 'tab-active'}`} onClick={()=>setTab(0)}>Movies</button>
+                {/* <button className="tabs-btn">TV Shows</button> */}
+                <button className={`tabs-btn ${tab===1 && 'tab-active'}`} onClick={()=>setTab(1)}>Favorites</button>
             </div>
           </div>
 

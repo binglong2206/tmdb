@@ -13,7 +13,7 @@ class NavSearch extends React.Component {
     };
   }
 
-  changeNavColor = () => {
+  animateNav = () => {
     if (window.scrollY >= 90) {
       this.setState({navScroll: true})
     } else this.setState({navScroll: false});
@@ -21,11 +21,11 @@ class NavSearch extends React.Component {
 
 
   componentDidMount() {
-    window.addEventListener('scroll', this.changeNavColor )
+    window.addEventListener('scroll', this.animateNav )
   }
 
   componentWillUnmount(){
-    window.removeEventListener('scroll', this.changeNavColor)
+    window.removeEventListener('scroll', this.animateNav)
   }
 
 
@@ -127,41 +127,32 @@ class NavSearch extends React.Component {
     return (
       <>
         <div className={`main-nav nav-container fadeIn ${navScroll && 'nav-scroll'}`}>
-          {/* <nav>
-            <div className={`desktop-nav ${search && "hide"}`}>
-              <div>LOGO</div>
-              <div>Data Provided By TMDB....</div>
-            </div>
-          </nav> */}
-
           {/** Set SearchContainer absolute FOR NOW, easier to manage animation. */}
           <div
             className={`search-container ${!search && "hide"} ${navScroll && 'nav-scroll'}`}
             onClick={this.searchListener()}
           >
-            <div className="link-search" />
+            <div className="search-icon" />
             <div className="search-bar">
               <div className="input-container">
                 <form onSubmit={(e)=> {
                   e.preventDefault();
                   this.setState({search: false})
-                  console.log(this.props.searchHistory)
                 }}>
                   <input
                     type="text"
-                    placeholder="Search for your favorite movies"
+                    placeholder="Search movies"
                     value={this.state.searchText} onChange={this.handleChange}
                   />
                 </form>
               </div>
             </div>
-            {/* {isFetching && <h1>LOADING</h1> } */}
             <div
-              className={`link-close ${searchText === "" && 'hide-close'}`}
+              className={`close-icon ${searchText === "" && 'hide-close'}`}
               onClick={this.resetSearch}
             />
 
-            <div className="quick-links">
+            <div className="history-wrapper">
               <h2>Search History: </h2>
               <div className="links-container">
                 {this.displayHistory()}
