@@ -20,7 +20,7 @@ class App extends React.Component {
         if (data.success === false) throw new Error('custom error')
         this.props.reset({results: data.results, keyword: ""} )
       })
-      .catch(err => console.error(err))
+      .catch(e => {this.props.setError('err'); console.error(e)})
   };
 
   nextPage = async () => {
@@ -37,7 +37,8 @@ class App extends React.Component {
             this.props.addResults(data.results)
         }
         } catch(e) {
-            console.error("CUSTOM ERROR")
+            this.props.setError('err')
+            console.error(e)
         }
   }
 

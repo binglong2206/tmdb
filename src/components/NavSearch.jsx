@@ -56,18 +56,17 @@ class NavSearch extends React.Component {
 
      
       const data = await res.json();
+      console.log(data)
       
-      if (data.success === false) {
-        throw new Error("custom error");
-      } else {
-        this.props.reset({ results: data.results, keyword: keyword });
-        this.props.setFetching(false)
-        if (this.state.search) this.setState({search:false})
-      }
+      if (data.success === false) { throw new Error("Something went wrong")} 
+      this.props.reset({ results: data.results, keyword: keyword });
+      if (this.state.search) this.setState({search:false})
+      if (data.results.length === 0) this.props.setError('empty')
+
+      
     } catch (e) {
+      this.props.setError('err')
       this.setState({search: false})
-      this.props.setFetching(false) // Setting here again because TMDB fetch error unpredicted
-      console.error('CUUSAIODNS');
     }
   };
 
@@ -87,7 +86,7 @@ class NavSearch extends React.Component {
 
   // Set state and callback to init debounce
   handleChange = (e) => {
-    this.props.setFetching(true) // Better user experience if loading starts here than fetch
+    // this.props.setFetching(true) // Better user experience if loading starts here than fetch
     this.setState({ searchText: e.target.value }, this.debouncedSearch()); // Dont set param here
   };
 
@@ -105,7 +104,7 @@ class NavSearch extends React.Component {
     return history.map((el, key) => 
       <div key={key} onClick={()=>{
         this.setState({searchText:el, search: false})
-        this.props.setFetching(true)
+        // this.props.setFetching(true)
         this.newSearch(el) // Trigger fetch here cus' setState wont
       }}>{el}</div>
     )
@@ -114,14 +113,14 @@ class NavSearch extends React.Component {
 
   resetSearch = () => {
     this.setState({ search: false, searchText: "" });
-    this.props.setFetching(true)
+    // this.props.setFetching(true)
     this.newSearch("")
   }
 
 
 
   render() {
-    const { isFetching } = this.props
+    // const { isFetching } = this.props
     const { search, searchText, navScroll } = this.state;
 
     return (

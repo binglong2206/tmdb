@@ -60,6 +60,31 @@
   gap: 50px;
 }
 
+@media (max-width: 997px) {
+  .gallery .main-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+
+  .gallery .main-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 35px;
+    margin-bottom: 10px
+  }
+
+  .search-container.hide {
+    width: 70%;
+    margin-top: 10px;
+  }
+
+  .search-container {
+    width: 70%;
+    margin-top: 10px;
+  }
+}
+
 @media (min-width: 550px) {
   .container {
     max-width: 540px;
@@ -71,7 +96,6 @@
   }
 
   
-
 }
 
 @media (min-width: 768px) {
