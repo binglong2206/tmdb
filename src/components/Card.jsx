@@ -33,7 +33,7 @@ class Card extends React.Component {
 
         <div className="titles">
           <h3 className="poster-title">{title}</h3>
-          <div>{rating}</div>
+          {/* <div>{rating}</div> */}
         </div>
 
         <div className="info">
@@ -41,7 +41,7 @@ class Card extends React.Component {
           <div className="rating">
             <div>Release Date: {release ? release : 'TBA'}</div>
           </div>
-          <div>{lang}</div>
+          <div style={{color: '#adff2f', fontWeight:'bold'}}>{rating}⭐</div>
         </div>
         {this.state.isHover &&  
         <div className='badge badge-fadeIn' onClick={()=>setFavorite(el)}>

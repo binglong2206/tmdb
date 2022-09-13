@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/NavBar.css'
+import Logo from '../styles/images/blue_short.svg'
 import { mapState, mapDispatch } from "../stores/maps";
 import { connect } from "react-redux";
 import NavSearch from './NavSearch';
@@ -15,8 +16,9 @@ class Gallery extends React.Component {
         <div class="container">
           <div class="main-wrapper">
             <div class="titles">
-              <p class="subtitle">Data provided by TMDB's API</p>
-              <h2 class="h2 title">Trending Now:</h2>
+              <p class="subtitle">API Data provided & updated by:</p>
+              <img src={Logo} alt='tmdb-logo' />
+              {/* <h2 class="h2 title">Trending Now:</h2> */}
             </div>
             <div class="tabs">
                 <button class={`tabs-btn ${tab===0 && 'tab-active'}`} onClick={()=>setTab(0)}>Movies</button>
@@ -32,7 +34,7 @@ class Gallery extends React.Component {
                   <div key={key} ref={lastRef} className='fadeIn'>
                     <Card 
                       title={el.title ? el.title : el.name} 
-                      release={el.release_date.substring(0,4)} 
+                      release={el.release_date} 
                       lang={el.original_language.toUpperCase()} 
                       rating={el.vote_average.toFixed(1)}
                       source={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
@@ -44,7 +46,7 @@ class Gallery extends React.Component {
                 <div key={key} className='fadeIn'>
                     <Card 
                       title={el.title ? el.title : el.name} 
-                      release={el.release_date?.substring(0,4)} 
+                      release={el.release_date} 
                       lang={el.original_language?.toUpperCase()} 
                       rating={el.vote_average.toFixed(1)}
                       source={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}
@@ -59,7 +61,7 @@ class Gallery extends React.Component {
               <div key={key} className='fadeIn'>
                 <Card 
                   title={el.title ? el.title : el.name} 
-                  release={el.release_date?.substring(0,4)} 
+                  release={el.release_date} 
                   lang={el.original_language} 
                   rating={el.vote_average.toFixed(1)}
                   source={`https://image.tmdb.org/t/p/w200/${el.poster_path}`}

@@ -42,9 +42,9 @@ class App extends React.Component {
         if (data.success === false) {
             throw new Error('custom error')
         } else {
-          setTimeout(()=>{
+        
             this.props.addResults(data.results)
-          }, 2000)
+        
         }
         } catch(e) {
             console.error("CUSTOM ERROR")
@@ -56,10 +56,9 @@ class App extends React.Component {
     return (
       <> 
         <SearchBar />
-        <Gallery />
-        {/* <Observer nextPage={this.nextPage}>
+        <Observer nextPage={this.nextPage}>
           <Gallery />
-        </Observer>  */}
+        </Observer> 
       </>
     )
   }
