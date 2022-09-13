@@ -11,7 +11,7 @@ User can also favorite any of the movies and view them in a dedicated tab.
 
 The only pre-requisite to run the app locally is to register for TMDB's API, but in the repo, I've included my API key directly in all requests (just for this project) so you may skip this step if you wish to. 
 
-**P.S.** Class-based components & Redux are used specifically to practice for the company's stacks. 
+**P.S. Class-based components & Redux are used specifically to practice for the company's stacks.** 
 
 ### Prerequisites (Optional)
 
